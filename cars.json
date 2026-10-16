@@ -1,12 +1,17 @@
 {
-  "_note": "Edita aquí tus coches. Todos los precios son EJEMPLOS (example: true). Campos desconocidos = null (se muestran como —). Fotos: pon imágenes en img/ y lístalas en 'photos'.",
+  "_note": "Edita aquí tus coches. Textos en 7 idiomas (es, ca, en, fr, de, ru, zh); si falta un idioma se usa el español. Precios de EJEMPLO (example: true). Campos desconocidos = null (se muestran como —). Fotos: pon imágenes en img/ y lístalas en 'photos'.",
   "cars": [
     {
       "id": "rodius-1",
       "name": "SsangYong Rodius",
       "type": {
         "es": "Monovolumen 7 plazas",
-        "en": "7-seat minivan"
+        "ca": "Monovolum de 7 places",
+        "en": "7-seat minivan",
+        "fr": "Monospace 7 places",
+        "de": "Van mit 7 Sitzen",
+        "ru": "7-местный минивэн",
+        "zh": "7 座 MPV"
       },
       "silhouette": "img/placeholder-van.svg",
       "photos": [
@@ -25,16 +30,31 @@
       "seats": 7,
       "fuel": {
         "es": "Diésel (155 CV)",
-        "en": "Diesel (155 hp)"
+        "ca": "Dièsel (155 CV)",
+        "en": "Diesel (155 hp)",
+        "fr": "Diesel (155 ch)",
+        "de": "Diesel (155 PS)",
+        "ru": "Дизель (155 л. с.)",
+        "zh": "柴油（155 马力）"
       },
       "gearbox": {
         "es": "Manual 6 vel.",
-        "en": "6-speed manual"
+        "ca": "Manual de 6 velocitats",
+        "en": "6-speed manual",
+        "fr": "Manuelle, 6 vitesses",
+        "de": "6-Gang-Schaltgetriebe",
+        "ru": "Механика, 6 передач",
+        "zh": "6 速手动"
       },
       "year": 2013,
       "color": {
         "es": "Gris oscuro",
-        "en": "Dark grey"
+        "ca": "Gris fosc",
+        "en": "Dark grey",
+        "fr": "Gris foncé",
+        "de": "Dunkelgrau",
+        "ru": "Тёмно-серый",
+        "zh": "深灰色"
       },
       "range": null,
       "pricePerDay": 55,
@@ -44,11 +64,21 @@
       "extraKm": 0.15,
       "fuelPolicy": {
         "es": "Lleno / lleno",
-        "en": "Full to full"
+        "ca": "Ple / ple",
+        "en": "Full to full",
+        "fr": "Plein / plein",
+        "de": "Voll / voll",
+        "ru": "Полный бак — полный бак",
+        "zh": "满油取车，满油还车"
       },
       "description": {
         "es": "Ideal para familias y grupos: 7 plazas y mucho maletero.",
-        "en": "Ideal for families and groups: 7 seats and plenty of boot space."
+        "ca": "Ideal per a famílies i grups: 7 places i un maleter molt gran.",
+        "en": "Ideal for families and groups: 7 seats and plenty of boot space.",
+        "fr": "Idéal pour les familles et les groupes : 7 places et un grand coffre.",
+        "de": "Ideal für Familien und Gruppen: 7 Sitze und viel Kofferraum.",
+        "ru": "Идеален для семей и компаний: 7 мест и вместительный багажник.",
+        "zh": "非常适合家庭和团体出行：7 个座位，后备箱宽敞。"
       }
     },
     {
@@ -56,7 +86,12 @@
       "name": "SsangYong Rodius Clásico",
       "type": {
         "es": "Monovolumen 7 plazas",
-        "en": "7-seat minivan"
+        "ca": "Monovolum de 7 places",
+        "en": "7-seat minivan",
+        "fr": "Monospace 7 places",
+        "de": "Van mit 7 Sitzen",
+        "ru": "7-местный минивэн",
+        "zh": "7 座 MPV"
       },
       "silhouette": "img/placeholder-van.svg",
       "photos": [
@@ -69,7 +104,12 @@
       "year": null,
       "color": {
         "es": "Plata",
-        "en": "Silver"
+        "ca": "Plata",
+        "en": "Silver",
+        "fr": "Argent",
+        "de": "Silber",
+        "ru": "Серебристый",
+        "zh": "银色"
       },
       "range": null,
       "pricePerDay": 55,
@@ -79,11 +119,21 @@
       "extraKm": 0.15,
       "fuelPolicy": {
         "es": "Lleno / lleno",
-        "en": "Full to full"
+        "ca": "Ple / ple",
+        "en": "Full to full",
+        "fr": "Plein / plein",
+        "de": "Voll / voll",
+        "ru": "Полный бак — полный бак",
+        "zh": "满油取车，满油还车"
       },
       "description": {
         "es": "Rodius de primera generación, 7 plazas: espacio de sobra para grupos y equipaje.",
-        "en": "First-generation Rodius, 7 seats: loads of room for groups and luggage."
+        "ca": "Rodius de primera generació, 7 places: espai de sobres per a grups i equipatge.",
+        "en": "First-generation Rodius, 7 seats: loads of room for groups and luggage.",
+        "fr": "Rodius de première génération, 7 places : largement de quoi accueillir groupes et bagages.",
+        "de": "Rodius der ersten Generation, 7 Sitze: reichlich Platz für Gruppen und Gepäck.",
+        "ru": "Rodius первого поколения, 7 мест: много места для компании и багажа.",
+        "zh": "第一代 Rodius，7 座：团体出行和行李空间都绰绰有余。"
       }
     },
     {
@@ -91,7 +141,12 @@
       "name": "Tesla Model S 75D",
       "type": {
         "es": "Berlina eléctrica premium",
-        "en": "Premium electric saloon"
+        "ca": "Berlina elèctrica prèmium",
+        "en": "Premium electric saloon",
+        "fr": "Berline électrique premium",
+        "de": "Elektro-Limousine der Oberklasse",
+        "ru": "Электрический седан премиум-класса",
+        "zh": "高端电动轿车"
       },
       "silhouette": "img/placeholder-ev.svg",
       "photos": [
@@ -103,11 +158,21 @@
       "seats": 5,
       "fuel": {
         "es": "Eléctrico, tracción total (333 CV)",
-        "en": "Electric, AWD (333 hp)"
+        "ca": "Elèctric, tracció total (333 CV)",
+        "en": "Electric, AWD (333 hp)",
+        "fr": "Électrique, transmission intégrale (333 ch)",
+        "de": "Elektro, Allradantrieb (333 PS)",
+        "ru": "Электро, полный привод (333 л. с.)",
+        "zh": "纯电动，四驱（333 马力）"
       },
       "gearbox": {
         "es": "Automático",
-        "en": "Automatic"
+        "ca": "Automàtic",
+        "en": "Automatic",
+        "fr": "Automatique",
+        "de": "Automatik",
+        "ru": "Автомат",
+        "zh": "自动挡"
       },
       "year": null,
       "color": null,
@@ -119,17 +184,32 @@
       "extraKm": 0.2,
       "fuelPolicy": {
         "es": "Carga: devuélvelo con ≥20 % de batería o se cobra la recarga",
-        "en": "Charging: return with ≥20% battery or pay for charging"
+        "ca": "Càrrega: torna'l amb ≥20 % de bateria o es cobrarà la recàrrega",
+        "en": "Charging: return with ≥20% battery or pay for charging",
+        "fr": "Recharge : à rendre avec ≥ 20 % de batterie, sinon la recharge est facturée",
+        "de": "Laden: mit ≥ 20 % Akku zurückgeben, sonst wird das Laden berechnet",
+        "ru": "Зарядка: верните машину с зарядом ≥20 %, иначе зарядка оплачивается",
+        "zh": "充电：还车时电量需 ≥20%，否则收取充电费用"
       },
       "notes": [
         {
           "es": "⚡ Supercargadores Tesla: puedes usar la red de Supercargadores; las recargas durante el alquiler corren por tu cuenta y se liquidan al devolver el coche.",
-          "en": "⚡ Tesla Superchargers: you can use the Supercharger network; charging during the rental is at your expense and settled on return."
+          "ca": "⚡ Supercarregadors Tesla: pots fer servir la xarxa de Supercarregadors; les recàrregues durant el lloguer van a càrrec teu i es liquiden quan tornes el cotxe.",
+          "en": "⚡ Tesla Superchargers: you can use the Supercharger network; charging during the rental is at your expense and settled on return.",
+          "fr": "⚡ Superchargeurs Tesla : vous pouvez utiliser le réseau de Superchargeurs ; les recharges pendant la location sont à votre charge et réglées au retour de la voiture.",
+          "de": "⚡ Tesla Supercharger: Du kannst das Supercharger-Netz nutzen; die Ladekosten während der Miete trägst du, abgerechnet wird bei der Rückgabe.",
+          "ru": "⚡ Суперчарджеры Tesla: можно пользоваться сетью Supercharger; зарядка во время аренды оплачивается вами, расчёт — при возврате машины.",
+          "zh": "⚡ 特斯拉超级充电站：可使用超级充电网络；租期内的充电费用由您承担，还车时结算。"
         }
       ],
       "description": {
         "es": "Eléctrico premium, silencioso y rapidísimo. Cero emisiones.",
-        "en": "Premium EV, silent and very fast. Zero emissions."
+        "ca": "Elèctric prèmium, silenciós i rapidíssim. Zero emissions.",
+        "en": "Premium EV, silent and very fast. Zero emissions.",
+        "fr": "Électrique premium, silencieuse et très rapide. Zéro émission.",
+        "de": "Premium-Elektroauto, leise und enorm schnell. Null Emissionen.",
+        "ru": "Премиальный электромобиль: тихий и очень быстрый. Нулевые выбросы.",
+        "zh": "高端电动车，安静又迅捷。零排放。"
       }
     },
     {
@@ -137,7 +217,12 @@
       "name": "Mercedes-Benz C 350 e Estate",
       "type": {
         "es": "Familiar (Estate) híbrido enchufable",
-        "en": "Plug-in hybrid estate"
+        "ca": "Familiar (Estate) híbrid endollable",
+        "en": "Plug-in hybrid estate",
+        "fr": "Break hybride rechargeable",
+        "de": "Plug-in-Hybrid-Kombi",
+        "ru": "Универсал, подключаемый гибрид",
+        "zh": "插电式混动旅行车"
       },
       "silhouette": "img/placeholder-sedan.svg",
       "photos": [
@@ -148,16 +233,31 @@
       "seats": null,
       "fuel": {
         "es": "Híbrido enchufable (gasolina + eléctrico)",
-        "en": "Plug-in hybrid (petrol + electric)"
+        "ca": "Híbrid endollable (benzina + elèctric)",
+        "en": "Plug-in hybrid (petrol + electric)",
+        "fr": "Hybride rechargeable (essence + électrique)",
+        "de": "Plug-in-Hybrid (Benzin + Elektro)",
+        "ru": "Подключаемый гибрид (бензин + электро)",
+        "zh": "插电式混动（汽油 + 电动）"
       },
       "gearbox": {
         "es": "Automático",
-        "en": "Automatic"
+        "ca": "Automàtic",
+        "en": "Automatic",
+        "fr": "Automatique",
+        "de": "Automatik",
+        "ru": "Автомат",
+        "zh": "自动挡"
       },
       "year": 2015,
       "color": {
         "es": "Negro",
-        "en": "Black"
+        "ca": "Negre",
+        "en": "Black",
+        "fr": "Noir",
+        "de": "Schwarz",
+        "ru": "Чёрный",
+        "zh": "黑色"
       },
       "range": null,
       "pricePerDay": 80,
@@ -167,11 +267,21 @@
       "extraKm": 0.15,
       "fuelPolicy": {
         "es": "Lleno / lleno",
-        "en": "Full to full"
+        "ca": "Ple / ple",
+        "en": "Full to full",
+        "fr": "Plein / plein",
+        "de": "Voll / voll",
+        "ru": "Полный бак — полный бак",
+        "zh": "满油取车，满油还车"
       },
       "description": {
         "es": "Familiar premium (Estate) híbrido enchufable, con etiqueta ambiental y gran maletero.",
-        "en": "Premium plug-in hybrid estate with a low-emission label and a big boot."
+        "ca": "Familiar prèmium (Estate) híbrid endollable, amb etiqueta ambiental i un gran maleter.",
+        "en": "Premium plug-in hybrid estate with a low-emission label and a big boot.",
+        "fr": "Break premium hybride rechargeable, avec vignette environnementale espagnole et grand coffre.",
+        "de": "Premium-Plug-in-Hybrid-Kombi mit spanischer Umweltplakette und großem Kofferraum.",
+        "ru": "Премиальный универсал — подключаемый гибрид с экологической меткой DGT и большим багажником.",
+        "zh": "高端插电式混动旅行车，拥有西班牙环保标识，后备箱超大。"
       }
     },
     {
@@ -179,14 +289,24 @@
       "name": "Audi A3 2.0 TDI",
       "type": {
         "es": "Compacto",
-        "en": "Compact"
+        "ca": "Compacte",
+        "en": "Compact",
+        "fr": "Compacte",
+        "de": "Kompaktwagen",
+        "ru": "Компактный автомобиль",
+        "zh": "紧凑型车"
       },
       "silhouette": "img/placeholder-sedan.svg",
       "photos": [],
       "seats": 5,
       "fuel": {
         "es": "Diésel (140 CV)",
-        "en": "Diesel (140 hp)"
+        "ca": "Dièsel (140 CV)",
+        "en": "Diesel (140 hp)",
+        "fr": "Diesel (140 ch)",
+        "de": "Diesel (140 PS)",
+        "ru": "Дизель (140 л. с.)",
+        "zh": "柴油（140 马力）"
       },
       "gearbox": null,
       "year": 2007,
@@ -199,11 +319,21 @@
       "extraKm": 0.12,
       "fuelPolicy": {
         "es": "Lleno / lleno",
-        "en": "Full to full"
+        "ca": "Ple / ple",
+        "en": "Full to full",
+        "fr": "Plein / plein",
+        "de": "Voll / voll",
+        "ru": "Полный бак — полный бак",
+        "zh": "满油取车，满油还车"
       },
       "description": {
         "es": "Compacto ágil y económico, perfecto para ciudad y carretera.",
-        "en": "Nimble, economical compact for city and road."
+        "ca": "Compacte àgil i econòmic, perfecte per a ciutat i carretera.",
+        "en": "Nimble, economical compact for city and road.",
+        "fr": "Compacte agile et économique, parfaite en ville comme sur la route.",
+        "de": "Wendiger, sparsamer Kompaktwagen – perfekt für Stadt und Landstraße.",
+        "ru": "Манёвренный и экономичный — отлично подходит для города и трассы.",
+        "zh": "灵活省油的紧凑型车，城市和公路驾驶皆宜。"
       }
     }
   ]
