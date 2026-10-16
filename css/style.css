@@ -73,3 +73,29 @@ h2.h3{font-size:1.15rem;margin:18px 0 6px}
 .import .card{color:var(--tx)}.import .card .meta{color:var(--mu)}
 .gallery .thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:6px;overflow:visible}
 .gallery .thumbs img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;cursor:pointer;border-radius:6px}
+/* v3: hub, servicios, consultoría, contacto, comentarios */
+.main-nav a{padding:6px 2px;border-bottom:2px solid transparent;margin-left:14px}
+.main-nav a.is-active{color:var(--tx);border-bottom-color:var(--p)}
+.home-hero{padding-bottom:40px}
+.doors{display:grid;gap:14px;margin-top:22px}
+.door{display:flex;flex-direction:column;gap:6px;background:#ffffff0f;border:1px solid #ffffff26;border-radius:var(--r);padding:20px;color:#e9eef3;text-decoration:none;transition:transform .15s,background .15s}
+.door:hover{transform:translateY(-3px);background:#ffffff1a}.door h2{color:#fff;font-size:1.25rem;margin:2px 0}.door p{margin:0 0 10px;opacity:.85;flex:1}.door .btn{align-self:flex-start}
+.door-imp{background:#7fe0d21f;border-color:#7fe0d280}
+.door .btn.alt{background:transparent;color:#fff;border:2px solid #ffffff66}
+.units{padding-top:30px;border-top:1px solid #ffffff1a}
+.import h2.big{font-size:1.7rem;color:#fff;margin:4px 0 8px}
+.price-note{background:#ffffff12;border-left:3px solid #7fe0d2;padding:10px 14px;border-radius:8px;margin:16px 0;font-size:.95rem}.price-note a{color:#7fe0d2}
+.step h3{margin:6px 0}.steps.four,.steps.seven,.steps.three{grid-template-columns:1fr}
+.step b{font-size:1rem}.step ul{margin:6px 0 0;padding-left:0}
+ul.check{list-style:none;padding:0;margin:10px 0}ul.check li{padding-left:26px;position:relative;margin:0 0 8px}ul.check li::before{content:"✓";position:absolute;left:4px;color:var(--p);font-weight:800}
+ol.cost{padding-left:22px}ol.cost li{margin:0 0 8px}
+.two-col{display:grid;gap:16px}.two-col h2{margin-top:0;font-size:1.3rem}
+.narrow{max-width:820px}
+.actions.two{grid-template-columns:1fr}
+.contact{background:#eef4f3;padding:44px 0}.contact h2{margin:4px 0 8px}
+.contact-grid{display:grid;gap:22px}.ct-form label{font-size:.8rem;font-weight:700;display:block;margin:10px 0 4px;color:var(--mu)}.ct-form label:first-child{margin-top:0}
+.ct-form .actions{margin-top:14px}.err{color:#b42318;font-weight:600;margin:8px 0 0}
+.comments{padding:36px 0;border-top:1px solid #e5e9e8}.comments h2{margin:0 0 4px}.cm-soon p{margin:0 0 12px}
+.foot-nav a{margin-right:2px}
+@media(min-width:760px){.doors{grid-template-columns:1.25fr 1fr 1fr}.steps.four{grid-template-columns:repeat(4,1fr)}.steps.three{grid-template-columns:repeat(3,1fr)}
+ .steps.seven{grid-template-columns:repeat(4,1fr)}.two-col{grid-template-columns:1fr 1fr}.contact-grid{grid-template-columns:1fr 1.2fr;align-items:start}.actions.two{grid-template-columns:1fr 1fr}.import h2.big{font-size:2.2rem}}

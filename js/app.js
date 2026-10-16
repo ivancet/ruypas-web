@@ -24,7 +24,7 @@ box.innerHTML=h;$("#cal-m").textContent=first.toLocaleDateString(t("locale"),{mo
 function renderDetail(){const el=$("#detail");if(!el)return;const c=RENT.find(x=>x.id===qs.get("id"))||RENT[0];if(!c){el.innerHTML=t("notfound");return}
 document.title=c.name+" · Ruypas Rent";setMeta(c);syncSwitch(c.id);const ph=(c.photos&&c.photos.length?c.photos:[c.silhouette]).map(P);
 const sp=[[t("fuel"),tr(c.fuel)||"—"],[t("gear"),tr(c.gearbox)||"—"],[t("seats.l"),c.seats||"—"],[t("range"),c.range?c.range+" km":"—"],[t("year"),c.year||"—"],[t("color"),tr(c.color)||"—"],[t("deposit"),c.deposit+" €"],[t("km"),`${c.kmPerDay} ${t("kmd")} (${c.extraKm} €/${t("extra")})`],[t("fuelp"),tr(c.fuelPolicy)],[t("price"),c.pricePerDay+" €"+t("day")]];
-el.innerHTML=`<div><p><a href="index.html#coches">${t("back")}</a></p><div class="gallery"><img id="main" src="${ph[0]}" alt="${c.name}">${ph.length>1?`<div class="thumbs">${ph.map(p=>`<img src="${p}" onclick="main.src=this.src">`).join("")}</div>`:`<p class="meta">${t("photo")}</p>`}</div>
+el.innerHTML=`<div><p><a href="rent.html#coches">${t("back")}</a></p><div class="gallery"><img id="main" src="${ph[0]}" alt="${c.name}">${ph.length>1?`<div class="thumbs">${ph.map(p=>`<img src="${p}" onclick="main.src=this.src">`).join("")}</div>`:`<p class="meta">${t("photo")}</p>`}</div>
 <h1 style="margin:14px 0 4px">${c.name}</h1><div class="meta">${tr(c.type)} · 📍 ${t("loc")}</div><p>${tr(c.description)}</p>
 <div><span class="price">${c.pricePerDay} €<small>${t("day")}</small></span> ${c.example?`<span class="badge">${t("example")}</span>`:""}</div>
 <div class="specs">${sp.map(([k,v])=>`<div><span>${k}</span>${v}</div>`).join("")}</div><p class="note">🛡️ ${t("ins")}</p>${(c.notes||[]).map(n=>`<p class="note">${tr(n)}</p>`).join("")}
@@ -83,10 +83,39 @@ function renderSale(){const el=$("#sale");if(!el)return;const c=SALE.find(x=>x.i
 document.title=`${c.name} · ${tr(c.unit)} · Ruypas Import`;setMeta(c);syncSwitch(c.id);const ph=(c.photos&&c.photos.length?c.photos:[c.silhouette]).map(P);
 const S=c.specs,rows=[[t("sale.price"),priceTxt(c)],[t("sale.km"),fmtKm(c)],[t("sale.batt"),tr(c.battery)],[t("sale.eta"),tr(c.eta)],[t("sale.version"),tr(S.version)],[t("sale.reg"),tr(S.reg)],[t("sale.power"),tr(S.power)],[t("sale.accel"),tr(S.accel)],[t("sale.wltp"),tr(S.wltp)],[t("color"),tr(S.color)],[t("sale.interior"),tr(S.interior)],[t("seats.l"),tr(S.seats)],[t("sale.charge"),tr(S.charge)]];
 const msg=saleMsg(c);
-el.innerHTML=`<div><p><a href="index.html#import">${esc(t("sale.back"))}</a></p><div class="gallery"><img id="main" src="${ph[0]}" alt="${esc(c.name)}"><div class="thumbs">${ph.map(p=>`<img src="${p}" alt="" loading="lazy" onclick="main.src=this.src">`).join("")}</div></div>
+el.innerHTML=`<div><p><a href="import.html#unidades">${esc(t("sale.back"))}</a></p><div class="gallery"><img id="main" src="${ph[0]}" alt="${esc(c.name)}"><div class="thumbs">${ph.map(p=>`<img src="${p}" alt="" loading="lazy" onclick="main.src=this.src">`).join("")}</div></div>
 <p class="kicker dark">Ruypas Import</p><h1 style="margin:4px 0">${esc(c.name)} <small class="meta">· ${esc(tr(c.unit))}</small></h1><p>${esc(tr(c.description))}</p>
 <h2 class="h3">${esc(t("sale.specs"))}</h2><div class="specs">${rows.map(([k,v])=>`<div><span>${esc(k)}</span>${esc(v)}</div>`).join("")}</div>
 <h2 class="h3">${esc(t("sale.equip"))}</h2><ul class="feat">${(tr(c.features)||[]).map(f=>`<li>${esc(f)}</li>`).join("")}</ul></div>
 <div><div class="box" style="position:sticky;top:76px"><p class="kicker dark">Ruypas Import</p><div class="price">${esc(priceTxt(c))}</div><p class="meta">🚚 ${esc(tr(c.eta))}</p><h2 style="font-size:1.15rem">${esc(t("sale.ask"))}</h2>
-<div class="actions"><a class="btn wa" target="_blank" rel="noopener" href="${waHref(msg)}">💬 ${esc(t("imp.wa"))}</a><a class="btn" href="${mailHref(t("m.sale.subj")+": "+c.name+" · "+tr(c.unit),msg)}">✉️ ${esc(t("imp.mail"))}</a></div><p class="meta" style="margin-top:12px">${esc(t("imp.note"))}</p></div></div>`}
-init();
+<div class="actions"><a class="btn wa" target="_blank" rel="noopener" href="${waHref(msg)}">💬 ${esc(t("imp.wa"))}</a><a class="btn" href="${mailHref(t("m.sale.subj")+": "+c.name+" · "+tr(c.unit),msg)}">✉️ ${esc(t("imp.mail"))}</a></div><p class="meta" style="margin-top:12px">💶 ${esc(t("imp.price.note"))} <a href="import.html#costes">${esc(t("imp.price.how"))} →</a></p><p class="meta">${esc(t("imp.note"))}</p></div></div>`;carLD(c,ph)}
+// Datos estructurados del coche en venta (sin precio: precio a consultar)
+function carLD(c,ph){const S=c.specs||{};const j={"@context":"https://schema.org","@type":"Car","name":c.name+" · "+tr(c.unit),"brand":{"@type":"Brand","name":"Tesla"},"model":"Model 3",
+ "vehicleModelDate":String(c.year),"color":tr(S.color),"fuelType":"Electricity","numberOfSeats":5,"image":ph.map(p=>new URL(p,location.href).href),"description":tr(c.description),
+ "mileageFromOdometer":{"@type":"QuantitativeValue","value":c.km,"unitCode":"KMT"},"offers":{"@type":"Offer","availability":"https://schema.org/PreOrder","seller":{"@id":"https://ruypas.com/#org"}}};
+ let e=document.getElementById("car-ld");if(!e){e=document.createElement("script");e.type="application/ld+json";e.id="car-ld";document.head.appendChild(e)}e.textContent=JSON.stringify(j)}
+// Menú: marca la sección activa (clic y desplazamiento)
+function navSpy(){const links=[...document.querySelectorAll(".main-nav a[data-nav]")];const def=document.body.dataset.nav||"";
+ const set=k=>links.forEach(a=>{const on=a.dataset.nav===k;a.classList.toggle("is-active",on);on?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
+ const secs=[...document.querySelectorAll("[data-nav]:not(a)")].filter(e=>e!==document.body);
+ const upd=()=>{const y=innerHeight*0.35;let k=def;for(const e of secs){const r=e.getBoundingClientRect();if(r.top<=y&&r.bottom>y){k=e.dataset.nav;break}}
+  if(innerHeight+scrollY>=document.documentElement.scrollHeight-4)k="contact";set(k)};
+ addEventListener("scroll",upd,{passive:true});addEventListener("hashchange",upd);links.forEach(a=>a.addEventListener("click",()=>set(a.dataset.nav)));upd()}
+// Formulario de contacto -> WhatsApp o email (sitio estático, sin servidor)
+function contactForm(){const f=$("#ct-form");if(!f)return;const pg=document.body.dataset.nav;if(["import","consult","rent"].includes(pg))$("#ct-topic").value=pg;
+ const build=()=>{const m=$("#ct-msg").value.trim();if(!m){$("#ct-err").hidden=false;$("#ct-msg").focus();return null}$("#ct-err").hidden=true;
+  const n=$("#ct-name").value.trim(),tp=$("#ct-topic").selectedOptions[0].text;return{subj:`${t("ct.subj")} · ${tp}`,body:`${n?t("ct.name")+": "+n+"\n":""}${t("ct.topic")}: ${tp}\n\n${m}\n\n${location.href}`}};
+ $("#ct-wa").onclick=()=>{const b=build();if(b)window.open(waHref(b.body),"_blank","noopener")};
+ $("#ct-mail").onclick=()=>{const b=build();if(b)location.href=mailHref(b.subj,b.body)}}
+// Comentarios con Giscus (GitHub Discussions en ivancet/ruypas-web), carga diferida.
+// Para activarlos: instalar la app https://github.com/apps/giscus en el repo y poner enabled:true.
+const GISCUS={enabled:false,repo:"ivancet/ruypas-web",repoId:"R_kgDOVMDpLQ",category:"Announcements",categoryId:"DIC_kwDOVMDpLc4DIqpP"};
+const GLANG={es:"es",ca:"ca",en:"en",fr:"fr",de:"de",ru:"ru",zh:"zh-CN"};
+function comments(){const el=$("#comments");if(!el)return;const id=qs.get("id");const term=el.dataset.term+(id?":"+id:"");
+ if(!GISCUS.enabled){el.innerHTML=`<div class="box cm-soon"><p>${esc(t("cm.soon"))}</p><div class="cta-row"><a class="btn wa" target="_blank" rel="noopener" href="${waHref(t("m.con.gen"))}">💬 WhatsApp</a><a class="btn" href="${mailHref(t("ct.subj"),"")}">✉️ Email</a></div></div>`;return}
+ const load=()=>{if(el.dataset.loaded)return;el.dataset.loaded=1;const sc=document.createElement("script");sc.src="https://giscus.app/client.js";sc.async=true;sc.crossOrigin="anonymous";
+  Object.entries({repo:GISCUS.repo,"repo-id":GISCUS.repoId,category:GISCUS.category,"category-id":GISCUS.categoryId,mapping:"specific",term,strict:"1","reactions-enabled":"1",
+   "emit-metadata":"0","input-position":"top",theme:"light",lang:GLANG[L]||"en",loading:"lazy"}).forEach(([k,v])=>sc.setAttribute("data-"+k,v));el.appendChild(sc)};
+ if("IntersectionObserver"in window){const o=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){o.disconnect();load()}},{rootMargin:"300px"});o.observe(el)}else load()}
+navSpy();contactForm();
+init().then(comments);
