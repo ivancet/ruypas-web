@@ -10,12 +10,17 @@
       },
       "silhouette": "img/placeholder-van.svg",
       "photos": [
+        "img/rodius-side-1.jpg",
         "img/rodius-1.jpg",
         "img/rodius-2.jpg",
         "img/rodius-3.jpg",
         "img/rodius-4.jpg",
         "img/rodius-5.jpg",
-        "img/rodius-6.jpg"
+        "img/rodius-6.jpg",
+        "img/rodius-side-2.jpg",
+        "img/rodius-int-1.jpg",
+        "img/rodius-int-2.jpg",
+        "img/rodius-int-3.jpg"
       ],
       "seats": 7,
       "fuel": {
@@ -126,11 +131,15 @@
       "id": "c350e",
       "name": "Mercedes-Benz C 350 e Estate",
       "type": {
-        "es": "Familiar híbrido enchufable",
+        "es": "Familiar (Estate) híbrido enchufable",
         "en": "Plug-in hybrid estate"
       },
       "silhouette": "img/placeholder-sedan.svg",
-      "photos": [],
+      "photos": [
+        "img/c350e-1.jpg",
+        "img/c350e-2.jpg",
+        "img/c350e-3.jpg"
+      ],
       "seats": null,
       "fuel": {
         "es": "Híbrido enchufable (gasolina + eléctrico)",
@@ -141,7 +150,10 @@
         "en": "Automatic"
       },
       "year": 2015,
-      "color": null,
+      "color": {
+        "es": "Negro",
+        "en": "Black"
+      },
       "range": null,
       "pricePerDay": 80,
       "example": true,
@@ -153,8 +165,8 @@
         "en": "Full to full"
       },
       "description": {
-        "es": "Familiar premium con etiqueta ambiental y gran maletero.",
-        "en": "Premium estate with low-emission label and a big boot."
+        "es": "Familiar premium (Estate) híbrido enchufable, con etiqueta ambiental y gran maletero.",
+        "en": "Premium plug-in hybrid estate with a low-emission label and a big boot."
       }
     },
     {
