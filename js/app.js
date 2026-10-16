@@ -109,7 +109,7 @@ function contactForm(){const f=$("#ct-form");if(!f)return;const pg=document.body
  $("#ct-mail").onclick=()=>{const b=build();if(b)location.href=mailHref(b.subj,b.body)}}
 // Comentarios con Giscus (GitHub Discussions en ivancet/ruypas-web), carga diferida.
 // Para activarlos: instalar la app https://github.com/apps/giscus en el repo y poner enabled:true.
-const GISCUS={enabled:false,repo:"ivancet/ruypas-web",repoId:"R_kgDOVMDpLQ",category:"Announcements",categoryId:"DIC_kwDOVMDpLc4DIqpP"};
+const GISCUS={enabled:true,repo:"ivancet/ruypas-web",repoId:"R_kgDOVMDpLQ",category:"Announcements",categoryId:"DIC_kwDOVMDpLc4DIqpP"};
 const GLANG={es:"es",ca:"ca",en:"en",fr:"fr",de:"de",ru:"ru",zh:"zh-CN"};
 function comments(){const el=$("#comments");if(!el)return;const id=qs.get("id");const term=el.dataset.term+(id?":"+id:"");
  if(!GISCUS.enabled){el.innerHTML=`<div class="box cm-soon"><p>${esc(t("cm.soon"))}</p><div class="cta-row"><a class="btn wa" target="_blank" rel="noopener" href="${waHref(t("m.con.gen"))}">💬 WhatsApp</a><a class="btn" href="${mailHref(t("ct.subj"),"")}">✉️ Email</a></div></div>`;return}
