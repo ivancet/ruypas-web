@@ -111,11 +111,21 @@ function contactForm(){const f=$("#ct-form");if(!f)return;const pg=document.body
 // Para activarlos: instalar la app https://github.com/apps/giscus en el repo y poner enabled:true.
 const GISCUS={enabled:true,repo:"ivancet/ruypas-web",repoId:"R_kgDOVMDpLQ",category:"Announcements",categoryId:"DIC_kwDOVMDpLc4DIqpP"};
 const GLANG={es:"es",ca:"ca",en:"en",fr:"fr",de:"de",ru:"ru",zh:"zh-CN"};
+// Disqus (Facebook/Google/X/invitado). Desactivado mientras shortname esté vacío. Carga solo al pulsar (cookies/anuncios de terceros).
+const DISQUS={shortname:""};
+const DLANG={es:"es_ES",ca:"ca",en:"en",fr:"fr",de:"de",ru:"ru",zh:"zh"};
+function giscusLoad(el,term){if(el.dataset.loaded)return;el.dataset.loaded=1;const sc=document.createElement("script");sc.src="https://giscus.app/client.js";sc.async=true;sc.crossOrigin="anonymous";
+ Object.entries({repo:GISCUS.repo,"repo-id":GISCUS.repoId,category:GISCUS.category,"category-id":GISCUS.categoryId,mapping:"specific",term,strict:"1","reactions-enabled":"1",
+  "emit-metadata":"0","input-position":"top",theme:"light",lang:GLANG[L]||"en",loading:"lazy"}).forEach(([k,v])=>sc.setAttribute("data-"+k,v));el.appendChild(sc)}
+function lazyRun(el,fn){if("IntersectionObserver"in window){const o=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){o.disconnect();fn()}},{rootMargin:"300px"});o.observe(el)}else fn()}
 function comments(){const el=$("#comments");if(!el)return;const id=qs.get("id");const term=el.dataset.term+(id?":"+id:"");
+ if(DISQUS.shortname){const intro=el.parentElement.querySelector(".meta");if(intro)intro.textContent=t("cm.s2");
+  const canon=(document.querySelector('link[hreflang="es"]')||{}).href||location.href.split("?")[0];const durl=canon+(id?"?id="+encodeURIComponent(id):"");
+  el.innerHTML=`<div class="box cm-disqus"><button type="button" class="btn" id="dq-load">💬 ${esc(t("cm.load"))}</button><p class="meta">${esc(t("cm.privacy"))}</p></div><div id="disqus_thread"></div>${GISCUS.enabled?`<p class="meta"><a href="#" id="gh-load">${esc(t("cm.gh"))}</a></p><div id="gh-box"></div>`:""}`;
+  $("#dq-load").onclick=()=>{$(".cm-disqus").remove();window.disqus_config=function(){this.page.url=durl;this.page.identifier=term;this.language=DLANG[L]||"en"};
+   const sc=document.createElement("script");sc.src=`https://${DISQUS.shortname}.disqus.com/embed.js`;sc.setAttribute("data-timestamp",+new Date());(document.head||document.body).appendChild(sc)};
+  const gl=$("#gh-load");if(gl)gl.onclick=e=>{e.preventDefault();gl.parentElement.remove();giscusLoad($("#gh-box"),term)};return}
  if(!GISCUS.enabled){el.innerHTML=`<div class="box cm-soon"><p>${esc(t("cm.soon"))}</p><div class="cta-row"><a class="btn wa" target="_blank" rel="noopener" href="${waHref(t("m.con.gen"))}">💬 WhatsApp</a><a class="btn" href="${mailHref(t("ct.subj"),"")}">✉️ Email</a></div></div>`;return}
- const load=()=>{if(el.dataset.loaded)return;el.dataset.loaded=1;const sc=document.createElement("script");sc.src="https://giscus.app/client.js";sc.async=true;sc.crossOrigin="anonymous";
-  Object.entries({repo:GISCUS.repo,"repo-id":GISCUS.repoId,category:GISCUS.category,"category-id":GISCUS.categoryId,mapping:"specific",term,strict:"1","reactions-enabled":"1",
-   "emit-metadata":"0","input-position":"top",theme:"light",lang:GLANG[L]||"en",loading:"lazy"}).forEach(([k,v])=>sc.setAttribute("data-"+k,v));el.appendChild(sc)};
- if("IntersectionObserver"in window){const o=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){o.disconnect();load()}},{rootMargin:"300px"});o.observe(el)}else load()}
+ lazyRun(el,()=>giscusLoad(el,term))}
 navSpy();contactForm();
 init().then(comments);
