@@ -1,4 +1,4 @@
-// PizarroCars · ruypas.com — lógica común a los 7 idiomas. Textos en js/i18n.js (generado desde i18n/ui.json).
+// Ruypas (ruypas.com): Ruypas Import + Ruypas Rent. Lógica común a los 7 idiomas; textos en js/i18n.js (generado desde i18n/ui.json).
 const HTML=document.documentElement,L=(HTML.lang in T)?HTML.lang:"es",B=HTML.dataset.base||"";
 const LANGS=["es","ca","en","fr","de","ru","zh"];
 const OWNER={email:"ivan@pizarro.cat",wa:"34687812997"};
@@ -7,13 +7,13 @@ const tr=v=>v&&typeof v==="object"&&!Array.isArray(v)?(v[L]??v.es??v.en):v;
 const P=p=>!p||/^(https?:|\/|data:)/.test(p)?p:B+p; // rutas relativas a la raíz del sitio
 const $=s=>document.querySelector(s);const qs=new URLSearchParams(location.search);
 const iso=d=>d.toISOString().slice(0,10);const D=s=>new Date(s+"T00:00:00Z");
-let CARS=[],AV={};
+let CARS=[],RENT=[],SALE=[],AV={};
 function busySet(id){const s=new Set();(AV[id]||[]).forEach(r=>{for(let d=D(r.from);d<=D(r.to);d.setUTCDate(d.getUTCDate()+1))s.add(iso(d))});return s}
 function nights(a,b){return Math.round((D(b)-D(a))/864e5)}
 function rangeFree(id,a,b){const s=busySet(id);for(let d=D(a);d<D(b);d.setUTCDate(d.getUTCDate()+1))if(s.has(iso(d)))return false;return true}
 const img=c=>P(c.photos&&c.photos.length?c.photos[0]:c.silhouette);
 function renderGrid(){const g=$("#grid");if(!g)return;const f=$("#s-from").value,to=$("#s-to").value,has=f&&to&&nights(f,to)>0;
-g.innerHTML=CARS.map(c=>{const ok=has?rangeFree(c.id,f,to):null;const q=has?`&from=${f}&to=${to}`:"";return `<a class="card" href="car.html?id=${c.id}${q}"><div class="ph"><img src="${img(c)}" alt="${c.name}">${c.example?`<span class="badge">${t("example")}</span>`:""}</div><div class="b"><h3>${c.name}</h3><div class="meta">${tr(c.type)} · ${c.seats?c.seats+" "+t("seats")+" · ":""}${tr(c.fuel)||""}</div><div style="display:flex;justify-content:space-between;align-items:end;margin-top:10px"><div class="price">${c.pricePerDay} €<small>${t("day")}</small></div>${ok===null?"":`<span class="meta" style="color:${ok?"#0b6e63":"#a33"}">${ok?"✓ "+t("free"):"✕ "+t("busy")}</span>`}</div></div></a>`}).join("")}
+g.innerHTML=RENT.map(c=>{const ok=has?rangeFree(c.id,f,to):null;const q=has?`&from=${f}&to=${to}`:"";return `<a class="card" href="car.html?id=${c.id}${q}"><div class="ph"><img src="${img(c)}" alt="${c.name}">${c.example?`<span class="badge">${t("example")}</span>`:""}</div><div class="b"><h3>${c.name}</h3><div class="meta">${tr(c.type)} · ${c.seats?c.seats+" "+t("seats")+" · ":""}${tr(c.fuel)||""}</div><div style="display:flex;justify-content:space-between;align-items:end;margin-top:10px"><div class="price">${c.pricePerDay} €<small>${t("day")}</small></div>${ok===null?"":`<span class="meta" style="color:${ok?"#0b6e63":"#a33"}">${ok?"✓ "+t("free"):"✕ "+t("busy")}</span>`}</div></div></a>`}).join("")}
 let calM;
 function renderCal(c){const box=$("#cal");if(!box)return;const s=busySet(c.id),today=iso(new Date()),f=$("#b-from").value,to=$("#b-to").value;
 const y=calM.getUTCFullYear(),m=calM.getUTCMonth(),first=new Date(Date.UTC(y,m,1)),off=(first.getUTCDay()+6)%7,n=new Date(Date.UTC(y,m+1,0)).getUTCDate();
@@ -21,8 +21,8 @@ const wd=t("wd");
 let h=wd.map(w=>`<div class="h">${w}</div>`).join("")+"<div></div>".repeat(off);
 for(let i=1;i<=n;i++){const d=iso(new Date(Date.UTC(y,m,i)));const cl=["d"];if(s.has(d))cl.push("busy");if(d<today)cl.push("past");if(f&&to&&d>=f&&d<to&&!s.has(d))cl.push("sel");h+=`<div class="${cl.join(" ")}">${i}</div>`}
 box.innerHTML=h;$("#cal-m").textContent=first.toLocaleDateString(t("locale"),{month:"long",year:"numeric",timeZone:"UTC"})}
-function renderDetail(){const el=$("#detail");if(!el)return;const c=CARS.find(x=>x.id===qs.get("id"))||CARS[0];if(!c){el.innerHTML=t("notfound");return}
-document.title=c.name+" · Pizarro Cars";setMeta(c);syncSwitch(c.id);const ph=(c.photos&&c.photos.length?c.photos:[c.silhouette]).map(P);
+function renderDetail(){const el=$("#detail");if(!el)return;const c=RENT.find(x=>x.id===qs.get("id"))||RENT[0];if(!c){el.innerHTML=t("notfound");return}
+document.title=c.name+" · Ruypas Rent";setMeta(c);syncSwitch(c.id);const ph=(c.photos&&c.photos.length?c.photos:[c.silhouette]).map(P);
 const sp=[[t("fuel"),tr(c.fuel)||"—"],[t("gear"),tr(c.gearbox)||"—"],[t("seats.l"),c.seats||"—"],[t("range"),c.range?c.range+" km":"—"],[t("year"),c.year||"—"],[t("color"),tr(c.color)||"—"],[t("deposit"),c.deposit+" €"],[t("km"),`${c.kmPerDay} ${t("kmd")} (${c.extraKm} €/${t("extra")})`],[t("fuelp"),tr(c.fuelPolicy)],[t("price"),c.pricePerDay+" €"+t("day")]];
 el.innerHTML=`<div><p><a href="index.html#coches">${t("back")}</a></p><div class="gallery"><img id="main" src="${ph[0]}" alt="${c.name}">${ph.length>1?`<div class="thumbs">${ph.map(p=>`<img src="${p}" onclick="main.src=this.src">`).join("")}</div>`:`<p class="meta">${t("photo")}</p>`}</div>
 <h1 style="margin:14px 0 4px">${c.name}</h1><div class="meta">${tr(c.type)} · 📍 ${t("loc")}</div><p>${tr(c.description)}</p>
@@ -46,8 +46,9 @@ $("#mail").href=`mailto:${OWNER.email}?subject=${encodeURIComponent(`${t("m.subj
 ["mail","wa"].forEach(i=>{$("#"+i).style.opacity=e?.5:1;$("#"+i).dataset.err=e});
 if(f&&D(f).getUTCMonth()!==calM.getUTCMonth()&&n>0){calM=new Date(Date.UTC(D(f).getUTCFullYear(),D(f).getUTCMonth(),1))}renderCal(c)};
 $("#bf").addEventListener("input",upd);["mail","wa"].forEach(i=>$("#"+i).addEventListener("click",ev=>{if(ev.currentTarget.dataset.err){ev.preventDefault();$("#err").textContent=ev.currentTarget.dataset.err}}));upd()}
-function render(){renderGrid();renderDetail()}
+function render(){renderImport();renderGrid();renderDetail();renderSale()}
 async function init(){[CARS,AV]=await Promise.all([fetch(B+"cars.json").then(r=>r.json()).then(j=>j.cars),fetch(B+"availability.json").then(r=>r.json())]);
+RENT=CARS.filter(c=>(c.category||"rent")!=="sale");SALE=CARS.filter(c=>c.category==="sale");
 const s=$("#search");if(s){const a=new Date();a.setDate(a.getDate()+3);const b=new Date(a);b.setDate(b.getDate()+4);$("#s-from").value=iso(a);$("#s-to").value=iso(b);s.onsubmit=e=>{e.preventDefault();renderGrid();$("#coches").scrollIntoView({behavior:"smooth"})};s.oninput=renderGrid}
 render();suggest()}
 
@@ -67,4 +68,25 @@ b.innerHTML=`<span lang="${pref}">${S["sug.t"]}</span><a class="btn" lang="${pre
 b.querySelector("a").onclick=()=>{try{localStorage.setItem("ruypas-lang",pref)}catch(e){}};b.querySelector("button").onclick=()=>{try{localStorage.setItem("ruypas-lang",L)}catch(e){}b.hidden=true}}
 syncSwitch(new URLSearchParams(location.search).get("id"));
 window.addEventListener("hashchange",()=>syncSwitch(new URLSearchParams(location.search).get("id")));
+// ---- Ruypas Import (venta) ----
+const esc=x=>String(x??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+const fmtKm=c=>c.km?(c.kmApprox?t("sale.approx")+" ":"")+Number(c.km).toLocaleString(t("locale"))+" km":"—";
+const priceTxt=c=>c.price?Number(c.price).toLocaleString(t("locale"))+" €":(tr(c.priceText)||t("price.req"));
+function saleMsg(c){return `${t("m.sale.hello")}\n\n${c.name} · ${tr(c.unit)} · ${c.year} · ${fmtKm(c)}\n${location.href.split("#")[0]}\n\n${t("m.sale.ask")}`}
+const waHref=txt=>`https://wa.me/${OWNER.wa}?text=${encodeURIComponent(txt)}`;
+const mailHref=(subj,txt)=>`mailto:${OWNER.email}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(txt)}`;
+function renderImport(){const g=$("#sale-grid");if(!g)return;
+g.innerHTML=SALE.map(c=>`<article class="card sale-card"><a class="ph" href="sale.html?id=${c.id}"><img src="${img(c)}" alt="${esc(c.name+" · "+tr(c.unit))}" loading="lazy"><span class="badge price-badge">${esc(priceTxt(c))}</span></a><div class="b"><h3><a href="sale.html?id=${c.id}">${esc(c.name)}</a> <small class="meta">· ${esc(tr(c.unit))}</small></h3>
+<div class="meta">${c.year} · ${fmtKm(c)} · ${esc(tr(c.specs.wltp))} WLTP · ${esc(tr(c.specs.power))}</div><div class="meta">🔋 ${esc(t("sale.batt"))}: ${esc(tr(c.battery))}</div><p class="eta">🚚 ${esc(tr(c.eta))}</p>
+<div class="actions"><a class="btn" href="sale.html?id=${c.id}">${esc(t("imp.more"))}</a><a class="btn wa" target="_blank" rel="noopener" href="${waHref(saleMsg(c).replace(location.href.split("#")[0],new URL("sale.html?id="+c.id,location.href).href))}">💬 WhatsApp</a></div></div></article>`).join("")}
+function renderSale(){const el=$("#sale");if(!el)return;const c=SALE.find(x=>x.id===qs.get("id"))||SALE[0];if(!c){el.innerHTML=t("notfound");return}
+document.title=`${c.name} · ${tr(c.unit)} · Ruypas Import`;setMeta(c);syncSwitch(c.id);const ph=(c.photos&&c.photos.length?c.photos:[c.silhouette]).map(P);
+const S=c.specs,rows=[[t("sale.price"),priceTxt(c)],[t("sale.km"),fmtKm(c)],[t("sale.batt"),tr(c.battery)],[t("sale.eta"),tr(c.eta)],[t("sale.version"),tr(S.version)],[t("sale.reg"),tr(S.reg)],[t("sale.power"),tr(S.power)],[t("sale.accel"),tr(S.accel)],[t("sale.wltp"),tr(S.wltp)],[t("color"),tr(S.color)],[t("sale.interior"),tr(S.interior)],[t("seats.l"),tr(S.seats)],[t("sale.charge"),tr(S.charge)]];
+const msg=saleMsg(c);
+el.innerHTML=`<div><p><a href="index.html#import">${esc(t("sale.back"))}</a></p><div class="gallery"><img id="main" src="${ph[0]}" alt="${esc(c.name)}"><div class="thumbs">${ph.map(p=>`<img src="${p}" alt="" loading="lazy" onclick="main.src=this.src">`).join("")}</div></div>
+<p class="kicker dark">Ruypas Import</p><h1 style="margin:4px 0">${esc(c.name)} <small class="meta">· ${esc(tr(c.unit))}</small></h1><p>${esc(tr(c.description))}</p>
+<h2 class="h3">${esc(t("sale.specs"))}</h2><div class="specs">${rows.map(([k,v])=>`<div><span>${esc(k)}</span>${esc(v)}</div>`).join("")}</div>
+<h2 class="h3">${esc(t("sale.equip"))}</h2><ul class="feat">${(tr(c.features)||[]).map(f=>`<li>${esc(f)}</li>`).join("")}</ul></div>
+<div><div class="box" style="position:sticky;top:76px"><p class="kicker dark">Ruypas Import</p><div class="price">${esc(priceTxt(c))}</div><p class="meta">🚚 ${esc(tr(c.eta))}</p><h2 style="font-size:1.15rem">${esc(t("sale.ask"))}</h2>
+<div class="actions"><a class="btn wa" target="_blank" rel="noopener" href="${waHref(msg)}">💬 ${esc(t("imp.wa"))}</a><a class="btn" href="${mailHref(t("m.sale.subj")+": "+c.name+" · "+tr(c.unit),msg)}">✉️ ${esc(t("imp.mail"))}</a></div><p class="meta" style="margin-top:12px">${esc(t("imp.note"))}</p></div></div>`}
 init();
