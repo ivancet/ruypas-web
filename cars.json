@@ -829,6 +829,158 @@
         "zh": "灵活省油的紧凑型车，城市和公路驾驶皆宜。"
       },
       "category": "rent"
+    },
+    {
+      "id": "sold-m3-red",
+      "category": "sale",
+      "status": "sold",
+      "name": "Tesla Model 3 Long Range Dual Motor",
+      "km": 190000,
+      "kmApprox": true,
+      "photos": [
+        "img/sold/sold-m3-red-1.jpg",
+        "img/sold/sold-m3-red-2.jpg",
+        "img/sold/sold-m3-red-3.jpg"
+      ],
+      "specs": {
+        "color": {
+          "es": "Rojo",
+          "ca": "Vermell",
+          "en": "Red",
+          "fr": "Rouge",
+          "de": "Rot",
+          "ru": "Красный",
+          "zh": "红色"
+        },
+        "origin": {
+          "es": "Importado de Países Bajos",
+          "ca": "Importat dels Països Baixos",
+          "en": "Imported from the Netherlands",
+          "fr": "Importée des Pays-Bas",
+          "de": "Aus den Niederlanden importiert",
+          "ru": "Ввезён из Нидерландов",
+          "zh": "自荷兰进口"
+        },
+        "extra": {
+          "es": "Ordenador Full Self-Driving (FSD) computer 3",
+          "ca": "Ordinador Full Self-Driving (FSD) computer 3",
+          "en": "Full Self-Driving (FSD) computer 3",
+          "fr": "Ordinateur Full Self-Driving (FSD) computer 3",
+          "de": "Full-Self-Driving-Computer (FSD) 3",
+          "ru": "Компьютер Full Self-Driving (FSD) computer 3",
+          "zh": "Full Self-Driving (FSD) 第 3 代计算机"
+        }
+      }
+    },
+    {
+      "id": "sold-m3-black-a",
+      "category": "sale",
+      "status": "sold",
+      "name": "Tesla Model 3",
+      "photos": [
+        "img/sold/sold-m3-black-1.jpg",
+        "img/sold/sold-m3-black-2.jpg"
+      ],
+      "specs": {
+        "color": {
+          "es": "Negro",
+          "ca": "Negre",
+          "en": "Black",
+          "fr": "Noir",
+          "de": "Schwarz",
+          "ru": "Чёрный",
+          "zh": "黑色"
+        },
+        "origin": {
+          "es": "Importado de Países Bajos",
+          "ca": "Importat dels Països Baixos",
+          "en": "Imported from the Netherlands",
+          "fr": "Importée des Pays-Bas",
+          "de": "Aus den Niederlanden importiert",
+          "ru": "Ввезён из Нидерландов",
+          "zh": "自荷兰进口"
+        }
+      }
+    },
+    {
+      "id": "sold-m3-black-b",
+      "category": "sale",
+      "status": "sold",
+      "name": "Tesla Model 3",
+      "photos": [
+        "img/sold/sold-m3-black2-1.jpg",
+        "img/sold/sold-m3-black2-2.jpg"
+      ],
+      "specs": {
+        "color": {
+          "es": "Negro",
+          "ca": "Negre",
+          "en": "Black",
+          "fr": "Noir",
+          "de": "Schwarz",
+          "ru": "Чёрный",
+          "zh": "黑色"
+        },
+        "origin": {
+          "es": "Importado de Países Bajos",
+          "ca": "Importat dels Països Baixos",
+          "en": "Imported from the Netherlands",
+          "fr": "Importée des Pays-Bas",
+          "de": "Aus den Niederlanden importiert",
+          "ru": "Ввезён из Нидерландов",
+          "zh": "自荷兰进口"
+        },
+        "extra": {
+          "es": "Llantas de 19\" con neumáticos Michelin Pilot Sport 5",
+          "ca": "Llantes de 19\" amb pneumàtics Michelin Pilot Sport 5",
+          "en": "19\" wheels with Michelin Pilot Sport 5 tyres",
+          "fr": "Jantes 19\" avec pneus Michelin Pilot Sport 5",
+          "de": "19-Zoll-Felgen mit Michelin Pilot Sport 5",
+          "ru": "19-дюймовые диски, шины Michelin Pilot Sport 5",
+          "zh": "19 英寸轮毂，米其林 Pilot Sport 5 轮胎"
+        }
+      }
+    },
+    {
+      "id": "sold-bmw-e93",
+      "category": "sale",
+      "status": "sold",
+      "name": "BMW Serie 3 Cabrio (E93)",
+      "nameL": {
+        "es": "BMW Serie 3 Cabrio (E93)",
+        "ca": "BMW Sèrie 3 Cabrio (E93)",
+        "en": "BMW 3 Series Convertible (E93)",
+        "fr": "BMW Série 3 Cabriolet (E93)",
+        "de": "BMW 3er Cabrio (E93)",
+        "ru": "BMW 3 серии кабриолет (E93)",
+        "zh": "宝马 3 系敞篷版 (E93)"
+      },
+      "photos": [
+        "img/sold/sold-bmw-1.jpg",
+        "img/sold/sold-bmw-2.jpg"
+      ],
+      "specs": {
+        "color": {
+          "es": "Blanco",
+          "ca": "Blanc",
+          "en": "White",
+          "fr": "Blanc",
+          "de": "Weiß",
+          "ru": "Белый",
+          "zh": "白色"
+        },
+        "extra": {
+          "es": "Techo rígido metálico escamoteable · tapicería de cuero beige",
+          "ca": "Sostre rígid metàl·lic retràctil · tapisseria de pell beix",
+          "en": "Retractable metal hardtop · beige leather",
+          "fr": "Toit rigide métallique escamotable · cuir beige",
+          "de": "Versenkbares Metall-Hardtop · beiges Leder",
+          "ru": "Складная металлическая жёсткая крыша · бежевая кожа",
+          "zh": "可折叠金属硬顶 · 米色真皮内饰"
+        }
+      }
     }
-  ]
+  ],
+  "deliveredCount": null,
+  "_note_sold": "Vendidos: para mostrar un coche vendido/entregado, añadirlo con category 'sale' y status 'sold' (opcional soldDate 'AAAA-MM'), con fotos propias (matrícula difuminada; añadir la matrícula a PLATES en tools/publish.py), sin precio ni nombre del comprador. La sección solo aparece si hay al menos 2 vendidos. 'deliveredCount' (número verificado) muestra la línea 'X coches entregados'; null = oculto."
 }

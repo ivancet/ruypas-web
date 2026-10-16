@@ -7,7 +7,7 @@ const tr=v=>v&&typeof v==="object"&&!Array.isArray(v)?(v[L]??v.es??v.en):v;
 const P=p=>!p||/^(https?:|\/|data:)/.test(p)?p:B+p; // rutas relativas a la raíz del sitio
 const $=s=>document.querySelector(s);const qs=new URLSearchParams(location.search);
 const iso=d=>d.toISOString().slice(0,10);const D=s=>new Date(s+"T00:00:00Z");
-let CARS=[],RENT=[],SALE=[],AV={};
+let CARS=[],RENT=[],SALE=[],SOLD=[],META={},AV={};
 function busySet(id){const s=new Set();(AV[id]||[]).forEach(r=>{for(let d=D(r.from);d<=D(r.to);d.setUTCDate(d.getUTCDate()+1))s.add(iso(d))});return s}
 function nights(a,b){return Math.round((D(b)-D(a))/864e5)}
 function rangeFree(id,a,b){const s=busySet(id);for(let d=D(a);d<D(b);d.setUTCDate(d.getUTCDate()+1))if(s.has(iso(d)))return false;return true}
@@ -46,9 +46,9 @@ $("#mail").href=`mailto:${OWNER.email}?subject=${encodeURIComponent(`${t("m.subj
 ["mail","wa"].forEach(i=>{$("#"+i).style.opacity=e?.5:1;$("#"+i).dataset.err=e});
 if(f&&D(f).getUTCMonth()!==calM.getUTCMonth()&&n>0){calM=new Date(Date.UTC(D(f).getUTCFullYear(),D(f).getUTCMonth(),1))}renderCal(c)};
 $("#bf").addEventListener("input",upd);["mail","wa"].forEach(i=>$("#"+i).addEventListener("click",ev=>{if(ev.currentTarget.dataset.err){ev.preventDefault();$("#err").textContent=ev.currentTarget.dataset.err}}));upd()}
-function render(){renderImport();renderGrid();renderDetail();renderSale()}
-async function init(){[CARS,AV]=await Promise.all([fetch(B+"cars.json").then(r=>r.json()).then(j=>j.cars),fetch(B+"availability.json").then(r=>r.json())]);
-RENT=CARS.filter(c=>(c.category||"rent")!=="sale");SALE=CARS.filter(c=>c.category==="sale");
+function render(){renderImport();renderSold();renderGrid();renderDetail();renderSale()}
+async function init(){[CARS,AV]=await Promise.all([fetch(B+"cars.json").then(r=>r.json()).then(j=>{META=j;return j.cars}),fetch(B+"availability.json").then(r=>r.json())]);
+RENT=CARS.filter(c=>(c.category||"rent")!=="sale");SALE=CARS.filter(c=>c.category==="sale"&&c.status!=="sold");SOLD=CARS.filter(c=>c.category==="sale"&&c.status==="sold");
 const s=$("#search");if(s){const a=new Date();a.setDate(a.getDate()+3);const b=new Date(a);b.setDate(b.getDate()+4);$("#s-from").value=iso(a);$("#s-to").value=iso(b);s.onsubmit=e=>{e.preventDefault();renderGrid();$("#coches").scrollIntoView({behavior:"smooth"})};s.oninput=renderGrid}
 render();suggest()}
 
@@ -79,7 +79,15 @@ function renderImport(){const g=$("#sale-grid");if(!g)return;
 g.innerHTML=SALE.map(c=>`<article class="card sale-card"><a class="ph" href="sale.html?id=${c.id}"><img src="${img(c)}" alt="${esc(c.name+" · "+tr(c.unit))}" loading="lazy"><span class="badge price-badge">${esc(priceTxt(c))}</span></a><div class="b"><h3><a href="sale.html?id=${c.id}">${esc(c.name)}</a> <small class="meta">· ${esc(tr(c.unit))}</small></h3>
 <div class="meta">${c.year} · ${fmtKm(c)} · ${esc(tr(c.specs.wltp))} WLTP · ${esc(tr(c.specs.power))}</div><div class="meta">🔋 ${esc(t("sale.batt"))}: ${esc(tr(c.battery))}</div><p class="eta">🚚 ${esc(tr(c.eta))}</p>
 <div class="actions"><a class="btn" href="sale.html?id=${c.id}">${esc(t("imp.more"))}</a><a class="btn wa" target="_blank" rel="noopener" href="${waHref(saleMsg(c).replace(location.href.split("#")[0],new URL("sale.html?id="+c.id,location.href).href))}">💬 WhatsApp</a></div></div></article>`).join("")}
-function renderSale(){const el=$("#sale");if(!el)return;const c=SALE.find(x=>x.id===qs.get("id"))||SALE[0];if(!c){el.innerHTML=t("notfound");return}
+// Vendidos / entregados: solo con al menos 2 coches marcados status "sold" (sin precio ni comprador)
+const SOLD_MIN=2;
+function renderSold(){const sec=$("#vendidos");if(!sec)return;if(SOLD.length<SOLD_MIN){sec.hidden=true;return}sec.hidden=false;
+ const n=META.deliveredCount,cnt=$("#sold-count");if(Number.isInteger(n)&&n>0){cnt.textContent="· "+t("sold.count").replace("{n}",n);cnt.hidden=false}
+ $("#sold-grid").innerHTML=SOLD.map(c=>{const nm=c.nameL?tr(c.nameL):c.name,S=c.specs||{},ph=(c.photos||[]).map(P),bd=esc(t("sold.badge"));
+ return `<article class="card sale-card is-sold"><div class="ph"><img src="${ph[0]}" alt="${esc(nm)} · ${bd}" loading="lazy"><span class="badge sold-badge">${bd}</span></div>${ph.length>1?`<div class="sold-th">${ph.map((u,i)=>`<button type="button" data-src="${u}" aria-label="${esc(nm)} ${i+1}"${i?"":' class="on"'}><img src="${u}" alt="" loading="lazy"></button>`).join("")}</div>`:""}
+ <div class="b"><h3>${esc(nm)}</h3><div class="meta">${[tr(S.color),c.km?fmtKm(c):"",tr(S.origin)].filter(Boolean).map(esc).join(" · ")}</div>${S.extra?`<div class="meta">${esc(tr(S.extra))}</div>`:""}<p class="meta sold-l">✅ ${esc(t("sold.state"))}</p></div></article>`}).join("");
+ $("#sold-grid").onclick=e=>{const b=e.target.closest(".sold-th button");if(!b)return;const card=b.closest(".card");card.querySelector(".ph img").src=b.dataset.src;card.querySelectorAll(".sold-th button").forEach(x=>x.classList.toggle("on",x===b))}}
+function renderSale(){const el=$("#sale");if(!el)return;const c=SALE.find(x=>x.id===qs.get("id"))||SALE[0];/* los vendidos no tienen ficha de venta */if(!c){el.innerHTML=t("notfound");return}
 document.title=`${c.name} · ${tr(c.unit)} · Ruypas Import`;setMeta(c);syncSwitch(c.id);const ph=(c.photos&&c.photos.length?c.photos:[c.silhouette]).map(P);
 const S=c.specs,rows=[[t("sale.price"),priceTxt(c)],[t("sale.km"),fmtKm(c)],[t("sale.batt"),tr(c.battery)],[t("sale.eta"),tr(c.eta)],[t("sale.version"),tr(S.version)],[t("sale.reg"),tr(S.reg)],[t("sale.power"),tr(S.power)],[t("sale.accel"),tr(S.accel)],[t("sale.wltp"),tr(S.wltp)],[t("color"),tr(S.color)],[t("sale.interior"),tr(S.interior)],[t("seats.l"),tr(S.seats)],[t("sale.charge"),tr(S.charge)]];
 const msg=saleMsg(c);
