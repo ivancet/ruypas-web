@@ -10,10 +10,10 @@
       },
       "silhouette": "img/placeholder-van.svg",
       "photos": [
+        "img/rodius-3.jpg",
         "img/rodius-side-1.jpg",
         "img/rodius-1.jpg",
         "img/rodius-2.jpg",
-        "img/rodius-3.jpg",
         "img/rodius-4.jpg",
         "img/rodius-5.jpg",
         "img/rodius-6.jpg",
@@ -94,7 +94,12 @@
         "en": "Premium electric saloon"
       },
       "silhouette": "img/placeholder-ev.svg",
-      "photos": [],
+      "photos": [
+        "img/model-s-1.jpg",
+        "img/model-s-2.jpg",
+        "img/model-s-3.jpg",
+        "img/model-s-4.jpg"
+      ],
       "seats": 5,
       "fuel": {
         "es": "Eléctrico, tracción total (333 CV)",
