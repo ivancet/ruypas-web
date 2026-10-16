@@ -1,0 +1,193 @@
+{
+  "_note": "Edita aquí tus coches. Todos los precios son EJEMPLOS (example: true). Campos desconocidos = null (se muestran como —). Fotos: pon imágenes en img/ y lístalas en 'photos'.",
+  "cars": [
+    {
+      "id": "rodius-1",
+      "name": "SsangYong Rodius",
+      "type": {
+        "es": "Monovolumen 7 plazas",
+        "en": "7-seat minivan"
+      },
+      "silhouette": "img/placeholder-van.svg",
+      "photos": [
+        "img/rodius-1.jpg",
+        "img/rodius-2.jpg",
+        "img/rodius-3.jpg",
+        "img/rodius-4.jpg",
+        "img/rodius-5.jpg",
+        "img/rodius-6.jpg"
+      ],
+      "seats": 7,
+      "fuel": {
+        "es": "Diésel (155 CV)",
+        "en": "Diesel (155 hp)"
+      },
+      "gearbox": {
+        "es": "Manual 6 vel.",
+        "en": "6-speed manual"
+      },
+      "year": 2013,
+      "color": {
+        "es": "Gris oscuro",
+        "en": "Dark grey"
+      },
+      "range": null,
+      "pricePerDay": 55,
+      "example": true,
+      "deposit": 300,
+      "kmPerDay": 200,
+      "extraKm": 0.15,
+      "fuelPolicy": {
+        "es": "Lleno / lleno",
+        "en": "Full to full"
+      },
+      "description": {
+        "es": "Ideal para familias y grupos: 7 plazas y mucho maletero.",
+        "en": "Ideal for families and groups: 7 seats and plenty of boot space."
+      }
+    },
+    {
+      "id": "rodius-2",
+      "name": "SsangYong Rodius Clásico",
+      "type": {
+        "es": "Monovolumen 7 plazas",
+        "en": "7-seat minivan"
+      },
+      "silhouette": "img/placeholder-van.svg",
+      "photos": [
+        "img/rodius2-1.jpg",
+        "img/rodius2-2.jpg"
+      ],
+      "seats": 7,
+      "fuel": null,
+      "gearbox": null,
+      "year": null,
+      "color": {
+        "es": "Plata",
+        "en": "Silver"
+      },
+      "range": null,
+      "pricePerDay": 55,
+      "example": true,
+      "deposit": 300,
+      "kmPerDay": 200,
+      "extraKm": 0.15,
+      "fuelPolicy": {
+        "es": "Lleno / lleno",
+        "en": "Full to full"
+      },
+      "description": {
+        "es": "Rodius de primera generación, 7 plazas: espacio de sobra para grupos y equipaje.",
+        "en": "First-generation Rodius, 7 seats: loads of room for groups and luggage."
+      }
+    },
+    {
+      "id": "model-s",
+      "name": "Tesla Model S 75D",
+      "type": {
+        "es": "Berlina eléctrica premium",
+        "en": "Premium electric saloon"
+      },
+      "silhouette": "img/placeholder-ev.svg",
+      "photos": [],
+      "seats": 5,
+      "fuel": {
+        "es": "Eléctrico, tracción total (333 CV)",
+        "en": "Electric, AWD (333 hp)"
+      },
+      "gearbox": {
+        "es": "Automático",
+        "en": "Automatic"
+      },
+      "year": null,
+      "color": null,
+      "range": null,
+      "pricePerDay": 120,
+      "example": true,
+      "deposit": 1000,
+      "kmPerDay": 300,
+      "extraKm": 0.2,
+      "fuelPolicy": {
+        "es": "Carga: devuélvelo con ≥20 % de batería o se cobra la recarga",
+        "en": "Charging: return with ≥20% battery or pay for charging"
+      },
+      "notes": [
+        {
+          "es": "⚡ Supercargadores Tesla: puedes usar la red de Supercargadores; las recargas durante el alquiler corren por tu cuenta y se liquidan al devolver el coche.",
+          "en": "⚡ Tesla Superchargers: you can use the Supercharger network; charging during the rental is at your expense and settled on return."
+        }
+      ],
+      "description": {
+        "es": "Eléctrico premium, silencioso y rapidísimo. Cero emisiones.",
+        "en": "Premium EV, silent and very fast. Zero emissions."
+      }
+    },
+    {
+      "id": "c350e",
+      "name": "Mercedes-Benz C 350 e Estate",
+      "type": {
+        "es": "Familiar híbrido enchufable",
+        "en": "Plug-in hybrid estate"
+      },
+      "silhouette": "img/placeholder-sedan.svg",
+      "photos": [],
+      "seats": null,
+      "fuel": {
+        "es": "Híbrido enchufable (gasolina + eléctrico)",
+        "en": "Plug-in hybrid (petrol + electric)"
+      },
+      "gearbox": {
+        "es": "Automático",
+        "en": "Automatic"
+      },
+      "year": 2015,
+      "color": null,
+      "range": null,
+      "pricePerDay": 80,
+      "example": true,
+      "deposit": 500,
+      "kmPerDay": 250,
+      "extraKm": 0.15,
+      "fuelPolicy": {
+        "es": "Lleno / lleno",
+        "en": "Full to full"
+      },
+      "description": {
+        "es": "Familiar premium con etiqueta ambiental y gran maletero.",
+        "en": "Premium estate with low-emission label and a big boot."
+      }
+    },
+    {
+      "id": "audi-a3",
+      "name": "Audi A3 2.0 TDI",
+      "type": {
+        "es": "Compacto",
+        "en": "Compact"
+      },
+      "silhouette": "img/placeholder-sedan.svg",
+      "photos": [],
+      "seats": 5,
+      "fuel": {
+        "es": "Diésel (140 CV)",
+        "en": "Diesel (140 hp)"
+      },
+      "gearbox": null,
+      "year": 2007,
+      "color": null,
+      "range": null,
+      "pricePerDay": 45,
+      "example": true,
+      "deposit": 250,
+      "kmPerDay": 250,
+      "extraKm": 0.12,
+      "fuelPolicy": {
+        "es": "Lleno / lleno",
+        "en": "Full to full"
+      },
+      "description": {
+        "es": "Compacto ágil y económico, perfecto para ciudad y carretera.",
+        "en": "Nimble, economical compact for city and road."
+      }
+    }
+  ]
+}
