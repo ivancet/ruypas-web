@@ -236,7 +236,7 @@
     },
     {
       "id": "model3-b",
-      "category": "sale",
+      "category": "sale", "status": "sold",
       "name": "Tesla Model 3 RWD",
       "unit": {
         "es": "Unidad B",
