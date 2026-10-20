@@ -1,5 +1,5 @@
 {
-  "_note": "Edita aquí tus coches. category: 'sale' = Ruypas Import (venta), 'rent' = Ruypas Rent (alquiler). Para añadir un coche en venta copia un bloque 'sale' y cambia id, unit, km, battery, photos y, si quieres, price (número en €) o priceText; con price null se muestra 'Precio a consultar'. Textos en 7 idiomas (es, ca, en, fr, de, ru, zh); si falta un idioma se usa el español. Precios de alquiler de EJEMPLO (example: true). Fotos en img/.",
+  "_note": "Edita aquí tus coches. category: 'sale' = Ruypas Import (venta), 'rent' = Ruypas Rent (alquiler). Para añadir un coche en venta copia un bloque 'sale' y cambia id, unit, km, battery, photos y, si quieres, price (número en €) o priceText; con price null se muestra 'Precio a consultar'. 'ref' = referencia visible (igual que el id del feed de Google). 'availability' = 'InStock' o 'PreOrder' (JSON-LD). Nunca poner el VIN ni 'importado' en textos públicos. Textos en 7 idiomas (es, ca, en, fr, de, ru, zh); si falta un idioma se usa el español. Precios de alquiler de EJEMPLO (example: true). Fotos en img/.",
   "cars": [
     {
       "id": "model3-a",
@@ -28,13 +28,13 @@
       "price": 23400,
       "priceText": null,
       "eta": {
-        "es": "Llegada a España en unas 2–3 semanas",
-        "ca": "Arribada a Espanya en unes 2–3 setmanes",
-        "en": "Arriving in Spain in about 2–3 weeks",
-        "fr": "Arrivée en Espagne d'ici 2 à 3 semaines environ",
-        "de": "Ankunft in Spanien in etwa 2–3 Wochen",
-        "ru": "Прибытие в Испанию примерно через 2–3 недели",
-        "zh": "约 2–3 周后抵达西班牙"
+        "es": "En camino: disponible en Alicante en unas 2–3 semanas. Ya se puede reservar.",
+        "ca": "En camí: disponible a Alacant en unes 2–3 setmanes. Ja es pot reservar.",
+        "en": "On its way: available in Alicante in about 2–3 weeks. You can reserve it now.",
+        "fr": "En route : disponible à Alicante d'ici 2 à 3 semaines environ. Réservable dès maintenant.",
+        "de": "Unterwegs: in etwa 2–3 Wochen in Alicante verfügbar. Jetzt reservierbar.",
+        "ru": "В пути: будет в Аликанте примерно через 2–3 недели. Можно забронировать уже сейчас.",
+        "zh": "运输途中：约 2–3 周后可在阿利坎特提车，现在即可预订。"
       },
       "specs": {
         "version": {
@@ -47,13 +47,13 @@
           "zh": "Model 3 后驱版（标准续航升级版），60 kWh 磷酸铁锂电池"
         },
         "reg": {
-          "es": "04/2023 (importado de Países Bajos)",
-          "ca": "04/2023 (importat dels Països Baixos)",
-          "en": "04/2023 (imported from the Netherlands)",
-          "fr": "04/2023 (importée des Pays-Bas)",
-          "de": "04/2023 (Import aus den Niederlanden)",
-          "ru": "04/2023 (импорт из Нидерландов)",
-          "zh": "2023 年 4 月（荷兰进口）"
+          "es": "04/2023",
+          "ca": "04/2023",
+          "en": "04/2023",
+          "fr": "04/2023",
+          "de": "04/2023",
+          "ru": "04/2023",
+          "zh": "2023 年 4 月"
         },
         "power": {
           "es": "208 kW / 283 CV",
@@ -213,13 +213,13 @@
         ]
       },
       "description": {
-        "es": "Tesla Model 3 RWD de 2023 en negro, importado de Países Bajos: eléctrico de 491 km WLTP, 283 CV y techo panorámico. Precio a consultar.",
-        "ca": "Tesla Model 3 RWD del 2023 en negre, importat dels Països Baixos: elèctric de 491 km WLTP, 283 CV i sostre panoràmic. Preu a consultar.",
-        "en": "2023 Tesla Model 3 RWD in black, imported from the Netherlands: 491 km WLTP range, 283 hp and a panoramic roof. Price on request.",
-        "fr": "Tesla Model 3 RWD de 2023, noire, importée des Pays-Bas : 491 km WLTP, 283 ch et toit panoramique. Prix sur demande.",
-        "de": "Tesla Model 3 RWD von 2023 in Schwarz, importiert aus den Niederlanden: 491 km WLTP, 283 PS und Panoramadach. Preis auf Anfrage.",
-        "ru": "Tesla Model 3 RWD 2023 года, чёрный, из Нидерландов: запас хода 491 км по WLTP, 283 л. с., панорамная крыша. Цена по запросу.",
-        "zh": "2023 年款黑色特斯拉 Model 3 后驱版，荷兰进口：WLTP 续航 491 公里，283 马力，全景天窗。价格面议。"
+        "es": "Tesla Model 3 RWD de 2023 en negro: eléctrico de 491 km WLTP, 283 CV y techo panorámico. 23.400 € IVA incluido. Vendido por Ruypas del Mediterráneo SL, Alicante.",
+        "ca": "Tesla Model 3 RWD del 2023 en negre: elèctric de 491 km WLTP, 283 CV i sostre panoràmic. 23.400 € IVA inclòs. Venut per Ruypas del Mediterráneo SL, Alacant.",
+        "en": "2023 Tesla Model 3 RWD in black: 491 km WLTP range, 283 hp and a panoramic roof. EUR 23,400 VAT included. Sold by Ruypas del Mediterráneo SL, Alicante.",
+        "fr": "Tesla Model 3 RWD de 2023, noire : 491 km WLTP, 283 ch et toit panoramique. 23 400 € TVA incluse. Vendue par Ruypas del Mediterráneo SL, Alicante.",
+        "de": "Tesla Model 3 RWD von 2023 in Schwarz: 491 km WLTP, 283 PS und Panoramadach. 23.400 € inkl. MwSt. Verkauf durch Ruypas del Mediterráneo SL, Alicante.",
+        "ru": "Tesla Model 3 RWD 2023 года, чёрный: запас хода 491 км по WLTP, 283 л. с., панорамная крыша. 23 400 € с НДС. Продавец: Ruypas del Mediterráneo SL, Аликанте.",
+        "zh": "2023 年款黑色特斯拉 Model 3 后驱版：WLTP 续航 491 公里，283 马力，全景天窗。售价 23,400 欧元（含增值税）。卖方：Ruypas del Mediterráneo SL，阿利坎特。"
       },
       "photos": [
         "img/model3-a-1.jpg",
@@ -232,11 +232,23 @@
         "img/model3-a-8.jpg"
       ],
       "silhouette": "img/placeholder-sedan.svg",
-      "kmApprox": false
+      "kmApprox": false,
+      "ref": "RUY-M3A",
+      "availability": "PreOrder",
+      "label": {
+        "es": "Etiqueta DGT CERO",
+        "ca": "Etiqueta DGT ZERO",
+        "en": "DGT ZERO emissions label",
+        "fr": "Vignette DGT ZÉRO",
+        "de": "DGT-Plakette ZERO",
+        "ru": "Экологическая метка DGT CERO",
+        "zh": "DGT 零排放标签"
+      }
     },
     {
       "id": "model3-b",
-      "category": "sale", "status": "sold",
+      "category": "sale",
+      "status": "sold",
       "name": "Tesla Model 3 RWD",
       "unit": {
         "es": "Unidad B",
@@ -260,15 +272,7 @@
       },
       "price": null,
       "priceText": null,
-      "eta": {
-        "es": "Llegada a España en unas 2–3 semanas",
-        "ca": "Arribada a Espanya en unes 2–3 setmanes",
-        "en": "Arriving in Spain in about 2–3 weeks",
-        "fr": "Arrivée en Espagne d'ici 2 à 3 semaines environ",
-        "de": "Ankunft in Spanien in etwa 2–3 Wochen",
-        "ru": "Прибытие в Испанию примерно через 2–3 недели",
-        "zh": "约 2–3 周后抵达西班牙"
-      },
+      "eta": null,
       "specs": {
         "version": {
           "es": "Model 3 RWD (Standard Range Plus), batería LFP de 60 kWh",
@@ -280,13 +284,13 @@
           "zh": "Model 3 后驱版（标准续航升级版），60 kWh 磷酸铁锂电池"
         },
         "reg": {
-          "es": "04/2023 (importado de Países Bajos)",
-          "ca": "04/2023 (importat dels Països Baixos)",
-          "en": "04/2023 (imported from the Netherlands)",
-          "fr": "04/2023 (importée des Pays-Bas)",
-          "de": "04/2023 (Import aus den Niederlanden)",
-          "ru": "04/2023 (импорт из Нидерландов)",
-          "zh": "2023 年 4 月（荷兰进口）"
+          "es": "04/2023",
+          "ca": "04/2023",
+          "en": "04/2023",
+          "fr": "04/2023",
+          "de": "04/2023",
+          "ru": "04/2023",
+          "zh": "2023 年 4 月"
         },
         "power": {
           "es": "208 kW / 283 CV",
@@ -446,13 +450,13 @@
         ]
       },
       "description": {
-        "es": "Tesla Model 3 RWD de 2023 en negro, importado de Países Bajos: eléctrico de 491 km WLTP, 283 CV y techo panorámico. Precio a consultar.",
-        "ca": "Tesla Model 3 RWD del 2023 en negre, importat dels Països Baixos: elèctric de 491 km WLTP, 283 CV i sostre panoràmic. Preu a consultar.",
-        "en": "2023 Tesla Model 3 RWD in black, imported from the Netherlands: 491 km WLTP range, 283 hp and a panoramic roof. Price on request.",
-        "fr": "Tesla Model 3 RWD de 2023, noire, importée des Pays-Bas : 491 km WLTP, 283 ch et toit panoramique. Prix sur demande.",
-        "de": "Tesla Model 3 RWD von 2023 in Schwarz, importiert aus den Niederlanden: 491 km WLTP, 283 PS und Panoramadach. Preis auf Anfrage.",
-        "ru": "Tesla Model 3 RWD 2023 года, чёрный, из Нидерландов: запас хода 491 км по WLTP, 283 л. с., панорамная крыша. Цена по запросу.",
-        "zh": "2023 年款黑色特斯拉 Model 3 后驱版，荷兰进口：WLTP 续航 491 公里，283 马力，全景天窗。价格面议。"
+        "es": "Tesla Model 3 RWD de 2023 en negro: eléctrico de 491 km WLTP, 283 CV y techo panorámico.",
+        "ca": "Tesla Model 3 RWD del 2023 en negre: elèctric de 491 km WLTP, 283 CV i sostre panoràmic.",
+        "en": "2023 Tesla Model 3 RWD in black: 491 km WLTP range, 283 hp and a panoramic roof.",
+        "fr": "Tesla Model 3 RWD de 2023, noire : 491 km WLTP, 283 ch et toit panoramique.",
+        "de": "Tesla Model 3 RWD von 2023 in Schwarz: 491 km WLTP, 283 PS und Panoramadach.",
+        "ru": "Tesla Model 3 RWD 2023 года, чёрный: запас хода 491 км по WLTP, 283 л. с., панорамная крыша.",
+        "zh": "2023 年款黑色特斯拉 Model 3 后驱版：WLTP 续航 491 公里，283 马力，全景天窗。"
       },
       "photos": [
         "img/model3-b-1.jpg",
