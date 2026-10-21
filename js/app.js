@@ -32,20 +32,20 @@ el.innerHTML=`<div><p><a href="rent.html#coches">${t("back")}</a></p><div class=
 <div><form class="box" id="bf" style="position:sticky;top:76px"><h2 style="margin:0">${t("book")}</h2>
 <label>${t("name")}</label><input id="b-name" autocomplete="name"><div class="row"><div><label>${t("email")}</label><input id="b-email" type="email"></div><div><label>${t("phone")}</label><input id="b-phone" type="tel"></div></div>
 <div class="row"><div><label>${t("from")}</label><input id="b-from" type="date"></div><div><label>${t("to")}</label><input id="b-to" type="date"></div></div>
-<div class="row"><div><label>${t("age")}</label><input id="b-age" type="number" min="18" value="30"></div><div><label>${t("lic")}</label><input id="b-lic" type="number" min="0" value="5"></div></div>
-<label>${t("msg")}</label><textarea id="b-msg" rows="2"></textarea><div class="total" id="tot"></div><div class="err" id="err"></div>
-<div class="actions"><a class="btn" id="mail" href="#">✉️ ${t("send")}</a><a class="btn wa" id="wa" href="#" target="_blank" rel="noopener">💬 ${t("sendwa")}</a></div></form></div>`;
+<label class="chk"><input type="checkbox" id="b-elig"> <span>${esc(t("b.elig"))}</span></label>
+<label>${t("msg")}</label><textarea id="b-msg" rows="2"></textarea><label class="chk"><input type="checkbox" id="b-c1"> <span>${esc(t("ck.rentb.a"))} <a href="rent.html#faq" target="_blank" rel="noopener">${esc(t("ck.rentb.l"))}</a></span></label><label class="chk"><input type="checkbox" id="b-c2"> <span>${esc(t("ck.priv.a"))} <a href="${B}privacidad.html" target="_blank" rel="noopener">${esc(t("pl.link"))}</a>${esc(t("ck.priv.b"))}</span></label><div class="total" id="tot"></div><div class="err" id="err"></div>
+<div class="actions"><a class="btn" id="mail" href="#">✉️ ${t("send")}</a><a class="btn wa" id="wa" href="#" target="_blank" rel="noopener">💬 ${t("sendwa")}</a></div><p class="meta pl-note">${esc(t("pl.note"))} <a href="${B}privacidad.html">${esc(t("pl.link"))}</a>.</p></form></div>`;
 const today=iso(new Date());$("#b-from").min=$("#b-to").min=today;if(qs.get("from"))$("#b-from").value=qs.get("from");if(qs.get("to"))$("#b-to").value=qs.get("to");
 calM=new Date(Date.UTC(new Date().getFullYear(),new Date().getMonth(),1));
 $("#pm").onclick=()=>{calM.setUTCMonth(calM.getUTCMonth()-1);renderCal(c)};$("#nm").onclick=()=>{calM.setUTCMonth(calM.getUTCMonth()+1);renderCal(c)};
 const upd=()=>{const f=$("#b-from").value,to=$("#b-to").value,n=f&&to?nights(f,to):0;let e="";
-if(!(n>0))e=t("e.dates");else if(!rangeFree(c.id,f,to))e=t("e.busy");else if(+$("#b-age").value<25||+$("#b-lic").value<2)e=t("e.age");else if(!$("#b-name").value||!$("#b-email").value||!$("#b-phone").value)e=t("e.req");
+if(!(n>0))e=t("e.dates");else if(!rangeFree(c.id,f,to))e=t("e.busy");else if(!$("#b-elig").checked)e=t("e.age");else if(!$("#b-name").value||!$("#b-email").value||!$("#b-phone").value)e=t("e.req");else if(!$("#b-c1").checked||!$("#b-c2").checked)e=t("e.consent");
 const tot=n>0?n*c.pricePerDay:0;$("#tot").innerHTML=n>0?`${n} ${t("days")} × ${c.pricePerDay} € = <b>${tot} €</b> ${c.example?`<span class="badge">${t("example")}</span>`:""}<br><span class="meta">+ ${t("deposit")}: ${c.deposit} € · ${n*c.kmPerDay} km</span>`:`${t("total")}: —`;
-$("#err").textContent=e;const body=`${t("m.hello")}\n\n${c.name}\n${t("from")}: ${f}\n${t("to")}: ${to}\n${n} ${t("days")} → ${t("total")}: ${tot} € (${t("example")})\n${t("deposit")}: ${c.deposit} €\n\n${t("name")}: ${$("#b-name").value}\n${t("email")}: ${$("#b-email").value}\n${t("phone")}: ${$("#b-phone").value}\n${t("age")}: ${$("#b-age").value} · ${t("lic")}: ${$("#b-lic").value}\n${$("#b-msg").value}`;
+$("#err").textContent=e;const body=`${t("m.hello")}\n\n${c.name}\n${t("from")}: ${f}\n${t("to")}: ${to}\n${n} ${t("days")} → ${t("total")}: ${tot} € (${t("example")})\n${t("deposit")}: ${c.deposit} €\n\n${t("name")}: ${$("#b-name").value}\n${t("email")}: ${$("#b-email").value}\n${t("phone")}: ${$("#b-phone").value}\n✅ ${t("b.elig")}\n${$("#b-msg").value}\n\n${consentLine("rent")}`;
 $("#mail").href=`mailto:${OWNER.email}?subject=${encodeURIComponent(`${t("m.subj")}: ${c.name} ${f} → ${to}`)}&body=${encodeURIComponent(body)}`;$("#wa").href=`https://wa.me/${OWNER.wa}?text=${encodeURIComponent(body)}`;
 ["mail","wa"].forEach(i=>{$("#"+i).style.opacity=e?.5:1;$("#"+i).dataset.err=e});
 if(f&&D(f).getUTCMonth()!==calM.getUTCMonth()&&n>0){calM=new Date(Date.UTC(D(f).getUTCFullYear(),D(f).getUTCMonth(),1))}renderCal(c)};
-$("#bf").addEventListener("input",upd);["mail","wa"].forEach(i=>$("#"+i).addEventListener("click",ev=>{if(ev.currentTarget.dataset.err){ev.preventDefault();$("#err").textContent=ev.currentTarget.dataset.err}}));upd()}
+$("#bf").addEventListener("input",upd);$("#bf").addEventListener("change",upd);["mail","wa"].forEach(i=>$("#"+i).addEventListener("click",ev=>{upd();if(ev.currentTarget.dataset.err){ev.preventDefault();$("#err").textContent=ev.currentTarget.dataset.err}}));upd()}
 function render(){renderImport();renderSold();renderGrid();renderDetail();renderSale()}
 async function init(){[CARS,AV]=await Promise.all([fetch(B+"cars.json").then(r=>r.json()).then(j=>{META=j;return j.cars}),fetch(B+"availability.json").then(r=>r.json())]);
 RENT=CARS.filter(c=>(c.category||"rent")!=="sale");SALE=CARS.filter(c=>c.category==="sale"&&c.status!=="sold");SOLD=CARS.filter(c=>c.category==="sale"&&c.status==="sold");
@@ -117,8 +117,9 @@ function navSpy(){const links=[...document.querySelectorAll(".main-nav a[data-na
  addEventListener("scroll",upd,{passive:true});addEventListener("hashchange",upd);links.forEach(a=>a.addEventListener("click",()=>set(a.dataset.nav)));upd()}
 // Formulario de contacto -> WhatsApp o email (sitio estático, sin servidor)
 function contactForm(){const f=$("#ct-form");if(!f)return;const pg=document.body.dataset.nav;if(["import","consult","rent"].includes(pg))$("#ct-topic").value=pg;
- const build=()=>{const m=$("#ct-msg").value.trim();if(!m){$("#ct-err").hidden=false;$("#ct-msg").focus();return null}$("#ct-err").hidden=true;
-  const n=$("#ct-name").value.trim(),tp=$("#ct-topic").selectedOptions[0].text;return{subj:`${t("ct.subj")} · ${tp}`,body:`${n?t("ct.name")+": "+n+"\n":""}${t("ct.topic")}: ${tp}\n\n${m}\n\n${location.href}`}};
+ const build=()=>{const m=$("#ct-msg").value.trim(),er=$("#ct-err");if(!m){er.textContent=t("ct.e");er.hidden=false;$("#ct-msg").focus();return null}
+  if(!$("#ct-c1").checked||!$("#ct-c2").checked){er.textContent=t("e.consent");er.hidden=false;return null}er.hidden=true;
+  const n=$("#ct-name").value.trim(),tp=$("#ct-topic").selectedOptions[0].text;return{subj:`${t("ct.subj")} · ${tp}`,body:`${n?t("ct.name")+": "+n+"\n":""}${t("ct.topic")}: ${tp}\n\n${m}\n\n${consentLine({import:"sale",rent:"rent"}[$("#ct-topic").value]||"web")}`}};
  $("#ct-wa").onclick=()=>{const b=build();if(b)window.open(waHref(b.body),"_blank","noopener")};
  $("#ct-mail").onclick=()=>{const b=build();if(b)location.href=mailHref(b.subj,b.body)}}
 // Comentarios con Giscus (GitHub Discussions en ivancet/ruypas-web), carga diferida.
@@ -131,6 +132,12 @@ const DLANG={es:"es_ES",ca:"ca",en:"en",fr:"fr",de:"de",ru:"ru",zh:"zh"};
 function giscusLoad(el,term){if(el.dataset.loaded)return;el.dataset.loaded=1;const sc=document.createElement("script");sc.src="https://giscus.app/client.js";sc.async=true;sc.crossOrigin="anonymous";
  Object.entries({repo:GISCUS.repo,"repo-id":GISCUS.repoId,category:GISCUS.category,"category-id":GISCUS.categoryId,mapping:"specific",term,strict:"1","reactions-enabled":"1",
   "emit-metadata":"0","input-position":"top",theme:"light",lang:GLANG[L]||"en",loading:"lazy"}).forEach(([k,v])=>sc.setAttribute("data-"+k,v));el.appendChild(sc)}
+// Consentimiento: versión de los textos aceptados + fecha/hora local con zona + página (queda en el mensaje de WhatsApp/email)
+const LEGALV={priv:"v2026-10-20",sale:"v2026-10-20",rent:"v2026-10-21",web:"v2026-10-20"};
+function stamp(){const d=new Date(),o=-d.getTimezoneOffset(),p=n=>String(Math.floor(Math.abs(n))).padStart(2,"0");return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}${o<0?"-":"+"}${p(o/60)}:${p(o%60)}`}
+function consentLine(k){return t("cs.line").replace("{doc}",t("doc."+k)).replace("{dv}",LEGALV[k]).replace("{pv}",LEGALV.priv).replace("{ts}",stamp()).replace("{url}",location.href.split("#")[0])}
+// Vídeo de YouTube: solo se carga al pulsar (youtube-nocookie.com)
+function ytFacade(){document.querySelectorAll(".yt-facade").forEach(b=>{const bt=b.querySelector(".yt-load");if(bt)bt.onclick=()=>{b.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(b.dataset.yt)}?autoplay=1" title="${esc(b.dataset.title||"")}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`}})}
 function lazyRun(el,fn){if("IntersectionObserver"in window){const o=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){o.disconnect();fn()}},{rootMargin:"300px"});o.observe(el)}else fn()}
 function comments(){const el=$("#comments");if(!el)return;const id=qs.get("id");const term=el.dataset.term+(id?":"+id:"");
  if(DISQUS.shortname){const intro=el.parentElement.querySelector(".meta");if(intro)intro.textContent=t("cm.s2");
@@ -140,6 +147,7 @@ function comments(){const el=$("#comments");if(!el)return;const id=qs.get("id");
    const sc=document.createElement("script");sc.src=`https://${DISQUS.shortname}.disqus.com/embed.js`;sc.setAttribute("data-timestamp",+new Date());(document.head||document.body).appendChild(sc)};
   const gl=$("#gh-load");if(gl)gl.onclick=e=>{e.preventDefault();gl.parentElement.remove();giscusLoad($("#gh-box"),term)};return}
  if(!GISCUS.enabled){el.innerHTML=`<div class="box cm-soon"><p>${esc(t("cm.soon"))}</p><div class="cta-row"><a class="btn wa" target="_blank" rel="noopener" href="${waHref(t("m.con.gen"))}">💬 WhatsApp</a><a class="btn" href="${mailHref(t("ct.subj"),"")}">✉️ Email</a></div></div>`;return}
- lazyRun(el,()=>giscusLoad(el,term))}
-navSpy();contactForm();
+ // giscus solo se carga al pulsar el botón (sin conexión a terceros antes)
+ el.innerHTML=`<div class="box cm-gh"><p class="meta">${esc(t("cm.gnote"))}</p><button type="button" class="btn" id="gh-load1">${esc(t("cm.gbtn"))}</button></div>`;$("#gh-load1").onclick=()=>{el.innerHTML="";giscusLoad(el,term)}}
+navSpy();contactForm();ytFacade();
 init().then(comments);

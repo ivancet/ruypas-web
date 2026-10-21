@@ -112,3 +112,8 @@ ol.cost{padding-left:22px}ol.cost li{margin:0 0 8px}
 .sold-badge{position:absolute;left:10px;top:10px;background:#b42318;color:#fff;border-color:#b42318;font-size:.85rem;letter-spacing:.08em}
 .sold-th{display:flex;gap:6px;padding:8px 10px 0}.sold-th button{border:2px solid transparent;padding:0;border-radius:6px;overflow:hidden;width:64px;height:46px;cursor:pointer;background:none}
 .sold-th button.on{border-color:var(--accent,#0b7a5c)}.sold-th img{width:100%;height:100%;object-fit:cover;filter:none}.is-sold .ph{position:relative}
+
+/* Casillas de consentimiento y vídeo con carga al pulsar */
+.chk{display:flex;gap:8px;align-items:flex-start;font-weight:500;color:inherit;font-size:.82rem;margin:10px 0 0}.chk input{width:auto;margin:2px 0 0;flex:none}.chk a{text-decoration:underline}
+.pl-note{font-size:.75rem;margin-top:10px}
+.yt-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;color:#fff;background:linear-gradient(135deg,#0d1117,#30363d)}.yt-ph p{max-width:520px;font-size:.9rem;margin:0}
