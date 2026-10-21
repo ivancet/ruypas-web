@@ -47,7 +47,7 @@ $("#mail").href=`mailto:${OWNER.email}?subject=${encodeURIComponent(`${t("m.subj
 if(f&&D(f).getUTCMonth()!==calM.getUTCMonth()&&n>0){calM=new Date(Date.UTC(D(f).getUTCFullYear(),D(f).getUTCMonth(),1))}renderCal(c)};
 $("#bf").addEventListener("input",upd);["mail","wa"].forEach(i=>$("#"+i).addEventListener("click",ev=>{if(ev.currentTarget.dataset.err){ev.preventDefault();$("#err").textContent=ev.currentTarget.dataset.err}}));upd()}
 function render(){renderImport();renderSold();renderGrid();renderDetail();renderSale()}
-async function init(){[CARS,AV]=await Promise.all([fetch(B+"cars.json").then(r=>r.json()).then(j=>{META=j;return j.cars.filter(c=>!c.hidden)}),fetch(B+"availability.json").then(r=>r.json())]);
+async function init(){[CARS,AV]=await Promise.all([fetch(B+"cars.json").then(r=>r.json()).then(j=>{META=j;return j.cars}),fetch(B+"availability.json").then(r=>r.json())]);
 RENT=CARS.filter(c=>(c.category||"rent")!=="sale");SALE=CARS.filter(c=>c.category==="sale"&&c.status!=="sold");SOLD=CARS.filter(c=>c.category==="sale"&&c.status==="sold");
 const s=$("#search");if(s){const a=new Date();a.setDate(a.getDate()+3);const b=new Date(a);b.setDate(b.getDate()+4);$("#s-from").value=iso(a);$("#s-to").value=iso(b);s.onsubmit=e=>{e.preventDefault();renderGrid();$("#coches").scrollIntoView({behavior:"smooth"})};s.oninput=renderGrid}
 render();suggest()}
