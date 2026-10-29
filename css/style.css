@@ -117,3 +117,6 @@ ol.cost{padding-left:22px}ol.cost li{margin:0 0 8px}
 .chk{display:flex;gap:8px;align-items:flex-start;font-weight:500;color:inherit;font-size:.82rem;margin:10px 0 0}.chk input{width:auto;margin:2px 0 0;flex:none}.chk a{text-decoration:underline}
 .pl-note{font-size:.75rem;margin-top:10px}
 .yt-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;color:#fff;background:linear-gradient(135deg,#0d1117,#30363d)}.yt-ph p{max-width:520px;font-size:.9rem;margin:0}
+.soon-badge{background:#0f766e;color:#fff;border-color:#0f766e;font-size:.85rem;letter-spacing:.08em}
+.ph .soon-badge{position:absolute;left:10px;top:10px}
+.soon-big{font-size:1rem;padding:5px 14px}

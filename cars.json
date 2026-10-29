@@ -1,5 +1,5 @@
 {
-  "_note": "Edita aquí tus coches. category: 'sale' = Ruypas Import (venta), 'rent' = Ruypas Rent (alquiler). Para añadir un coche en venta copia un bloque 'sale' y cambia id, unit, km, battery, photos y, si quieres, price (número en €) o priceText; con price null se muestra 'Precio a consultar'. 'ref' = referencia visible (igual que el id del feed de Google). 'availability' = 'InStock' o 'PreOrder' (JSON-LD). Nunca poner el VIN ni 'importado' en textos públicos. Textos en 7 idiomas (es, ca, en, fr, de, ru, zh); si falta un idioma se usa el español. Precios de alquiler de EJEMPLO (example: true). Fotos en img/.",
+  "_note": "Edita aquí tus coches. category: 'sale' = Ruypas Import (venta), 'rent' = Ruypas Rent (alquiler). Para añadir un coche en venta copia un bloque 'sale' y cambia id, unit, km, battery, photos y, si quieres, price (número en €) o priceText; con price null se muestra 'Precio a consultar'. 'ref' = referencia visible (igual que el id del feed de Google). 'availability' = 'InStock' o 'PreOrder' (JSON-LD). Nunca poner el VIN ni 'importado' en textos públicos. Textos en 7 idiomas (es, ca, en, fr, de, ru, zh); si falta un idioma se usa el español. Precios de alquiler de EJEMPLO (example: true). Fotos en img/. 'status':'soon' = Próximamente (insignia en tarjeta y ficha, sin precio).",
   "cars": [
     {
       "id": "model3-a",
@@ -234,6 +234,273 @@
       "silhouette": "img/placeholder-sedan.svg",
       "kmApprox": false,
       "ref": "RUY-M3A",
+      "availability": "PreOrder",
+      "label": {
+        "es": "Etiqueta DGT CERO",
+        "ca": "Etiqueta DGT ZERO",
+        "en": "DGT ZERO emissions label",
+        "fr": "Vignette DGT ZÉRO",
+        "de": "DGT-Plakette ZERO",
+        "ru": "Экологическая метка DGT CERO",
+        "zh": "DGT 零排放标签"
+      }
+    },
+    {
+      "id": "model3-lr-2023",
+      "category": "sale",
+      "status": "soon",
+      "name": "Tesla Model 3 Long Range",
+      "unit": {
+        "es": "Dual Motor AWD",
+        "ca": "Dual Motor AWD",
+        "en": "Dual Motor AWD",
+        "fr": "Dual Motor AWD",
+        "de": "Dual Motor AWD",
+        "ru": "Dual Motor AWD",
+        "zh": "双电机全轮驱动"
+      },
+      "year": 2023,
+      "km": 110199,
+      "battery": {
+        "es": "94 %",
+        "ca": "94 %",
+        "en": "94%",
+        "fr": "94 %",
+        "de": "94 %",
+        "ru": "94 %",
+        "zh": "94%"
+      },
+      "price": null,
+      "priceText": {
+        "es": "Consultar",
+        "ca": "Consultar",
+        "en": "Price on request",
+        "fr": "Prix sur demande",
+        "de": "Preis auf Anfrage",
+        "ru": "Цена по запросу",
+        "zh": "价格面议"
+      },
+      "eta": {
+        "es": "Próximamente en Alicante. Pregúntanos y te avisamos en cuanto llegue.",
+        "ca": "Properament a Alacant. Pregunta'ns i t'avisem quan arribi.",
+        "en": "Coming soon to Alicante. Ask us and we'll let you know as soon as it arrives.",
+        "fr": "Bientôt disponible à Alicante. Contactez-nous et nous vous prévenons dès son arrivée.",
+        "de": "Demnächst in Alicante. Fragen Sie uns, wir melden uns, sobald er da ist.",
+        "ru": "Скоро в Аликанте. Напишите нам — сообщим, как только автомобиль прибудет.",
+        "zh": "即将抵达阿利坎特。欢迎咨询，车辆到店后我们会第一时间通知您。"
+      },
+      "specs": {
+        "version": {
+          "es": "Model 3 Long Range Dual Motor AWD (tracción total), batería de 75 kWh",
+          "ca": "Model 3 Long Range Dual Motor AWD (tracció total), bateria de 75 kWh",
+          "en": "Model 3 Long Range Dual Motor AWD, 75 kWh battery",
+          "fr": "Model 3 Grande Autonomie Dual Motor (transmission intégrale), batterie 75 kWh",
+          "de": "Model 3 Maximale Reichweite Dual Motor (Allradantrieb), 75-kWh-Akku",
+          "ru": "Model 3 Long Range Dual Motor AWD (полный привод), батарея 75 кВт·ч",
+          "zh": "Model 3 长续航双电机全轮驱动版，75 kWh 电池"
+        },
+        "reg": {
+          "es": "02/2023",
+          "ca": "02/2023",
+          "en": "02/2023",
+          "fr": "02/2023",
+          "de": "02/2023",
+          "ru": "02/2023",
+          "zh": "2023 年 2 月"
+        },
+        "power": {
+          "es": "366 kW / 498 CV",
+          "ca": "366 kW / 498 CV",
+          "en": "366 kW / 498 hp",
+          "fr": "366 kW / 498 ch",
+          "de": "366 kW / 498 PS",
+          "ru": "366 кВт / 498 л. с.",
+          "zh": "366 kW / 498 马力"
+        },
+        "accel": {
+          "es": "4,4 s",
+          "ca": "4,4 s",
+          "en": "4.4 s",
+          "fr": "4,4 s",
+          "de": "4,4 s",
+          "ru": "4,4 с",
+          "zh": "4.4 秒"
+        },
+        "wltp": {
+          "es": "580 km",
+          "ca": "580 km",
+          "en": "580 km",
+          "fr": "580 km",
+          "de": "580 km",
+          "ru": "580 км",
+          "zh": "580 公里"
+        },
+        "color": {
+          "es": "Gris Midnight Silver metalizado",
+          "ca": "Gris Midnight Silver metal·litzat",
+          "en": "Midnight Silver Metallic (grey)",
+          "fr": "Gris Midnight Silver métallisé",
+          "de": "Midnight Silver Metallic (Grau)",
+          "ru": "Серый металлик (Midnight Silver)",
+          "zh": "午夜银灰色金属漆"
+        },
+        "interior": {
+          "es": "Cuero vegano negro, molduras efecto madera",
+          "ca": "Pell vegana negra, motllures efecte fusta",
+          "en": "Black vegan leather, wood-look trim",
+          "fr": "Similicuir vegan noir, inserts aspect bois",
+          "de": "Schwarzes veganes Leder, Zierleisten in Holzoptik",
+          "ru": "Чёрная веганская кожа, вставки под дерево",
+          "zh": "黑色素皮内饰，仿木纹饰板"
+        },
+        "seats": {
+          "es": "5",
+          "ca": "5",
+          "en": "5",
+          "fr": "5",
+          "de": "5",
+          "ru": "5",
+          "zh": "5"
+        },
+        "charge": {
+          "es": "AC 11 kW trifásica + carga rápida CCS (hasta 250 kW)",
+          "ca": "AC 11 kW trifàsica + càrrega ràpida CCS (fins a 250 kW)",
+          "en": "11 kW 3-phase AC + CCS fast charging (up to 250 kW)",
+          "fr": "AC 11 kW triphasé + recharge rapide CCS (jusqu'à 250 kW)",
+          "de": "11 kW AC (3-phasig) + CCS-Schnellladen (bis 250 kW)",
+          "ru": "AC 11 кВт (3 фазы) + быстрая зарядка CCS (до 250 кВт)",
+          "zh": "11 kW 三相交流充电 + CCS 直流快充（最高 250 kW）"
+        }
+      },
+      "features": {
+        "es": [
+          "Tracción total Dual Motor",
+          "Autopilot (control de crucero adaptativo y autoviraje)",
+          "Ordenador de conducción autónoma HW3 (FSD computer 3)",
+          "Procesador AMD Ryzen",
+          "Bomba de calor",
+          "Techo panorámico de cristal",
+          "Asientos de cuero negro, calefactados delante y detrás",
+          "Asientos delanteros eléctricos con memoria",
+          "Audio premium",
+          "Llantas de aleación de 19\"",
+          "Pantalla táctil central de 15\"",
+          "Aviso de ángulo muerto y frenada de emergencia"
+        ],
+        "ca": [
+          "Tracció total Dual Motor",
+          "Autopilot (control de creuer adaptatiu i autogir)",
+          "Ordinador de conducció autònoma HW3 (FSD computer 3)",
+          "Processador AMD Ryzen",
+          "Bomba de calor",
+          "Sostre panoràmic de vidre",
+          "Seients de pell negra, calefactats davant i darrere",
+          "Seients davanters elèctrics amb memòria",
+          "Àudio prèmium",
+          "Llantes d'aliatge de 19\"",
+          "Pantalla tàctil central de 15\"",
+          "Avís d'angle mort i frenada d'emergència"
+        ],
+        "en": [
+          "Dual Motor all-wheel drive",
+          "Autopilot (traffic-aware cruise control and Autosteer)",
+          "HW3 self-driving computer (FSD computer 3)",
+          "AMD Ryzen processor",
+          "Heat pump",
+          "Glass panoramic roof",
+          "Black leather seats, heated front and rear",
+          "Power front seats with memory",
+          "Premium audio",
+          "19\" alloy wheels",
+          "15\" central touchscreen",
+          "Blind-spot warning and emergency braking"
+        ],
+        "fr": [
+          "Transmission intégrale Dual Motor",
+          "Autopilot (régulateur adaptatif et Autosteer)",
+          "Ordinateur de conduite autonome HW3 (FSD computer 3)",
+          "Processeur AMD Ryzen",
+          "Pompe à chaleur",
+          "Toit panoramique en verre",
+          "Sièges en cuir noir, chauffants à l'avant et à l'arrière",
+          "Sièges avant électriques à mémoire",
+          "Audio premium",
+          "Jantes alliage 19\"",
+          "Écran tactile central 15\"",
+          "Alerte d'angle mort et freinage d'urgence"
+        ],
+        "de": [
+          "Dual-Motor-Allradantrieb",
+          "Autopilot (Abstandstempomat und Autosteer)",
+          "HW3-Autopilot-Computer (FSD Computer 3)",
+          "AMD-Ryzen-Prozessor",
+          "Wärmepumpe",
+          "Panorama-Glasdach",
+          "Schwarze Ledersitze, vorn und hinten beheizt",
+          "Elektrische Vordersitze mit Memory",
+          "Premium-Audio",
+          "19-Zoll-Leichtmetallfelgen",
+          "15-Zoll-Touchscreen in der Mitte",
+          "Totwinkelwarner und Notbremsassistent"
+        ],
+        "ru": [
+          "Полный привод Dual Motor",
+          "Autopilot (адаптивный круиз-контроль и автоподруливание)",
+          "Компьютер автопилота HW3 (FSD computer 3)",
+          "Процессор AMD Ryzen",
+          "Тепловой насос",
+          "Стеклянная панорамная крыша",
+          "Чёрные кожаные сиденья с подогревом спереди и сзади",
+          "Электрорегулировка передних сидений с памятью",
+          "Премиальная аудиосистема",
+          "19-дюймовые легкосплавные диски",
+          "Центральный сенсорный экран 15\"",
+          "Контроль слепых зон и экстренное торможение"
+        ],
+        "zh": [
+          "双电机全轮驱动",
+          "Autopilot（自适应巡航和自动转向）",
+          "HW3 自动驾驶计算机（FSD computer 3）",
+          "AMD Ryzen 处理器",
+          "热泵空调",
+          "全景玻璃车顶",
+          "黑色皮革座椅，前后排加热",
+          "前排电动座椅带记忆",
+          "高级音响",
+          "19 英寸铝合金轮毂",
+          "15 英寸中控触摸屏",
+          "盲区预警和紧急制动"
+        ]
+      },
+      "description": {
+        "es": "Próximamente: Tesla Model 3 Long Range Dual Motor AWD de 2023 en gris, con 110.199 km y la batería al 94 % (SoH). Tracción total, 498 CV, HW3, AMD Ryzen, bomba de calor y techo panorámico. Precio a consultar. Vendido por Ruypas del Mediterráneo SL, Alicante.",
+        "ca": "Properament: Tesla Model 3 Long Range Dual Motor AWD del 2023 en gris, amb 110.199 km i la bateria al 94 % (SoH). Tracció total, 498 CV, HW3, AMD Ryzen, bomba de calor i sostre panoràmic. Preu a consultar. Venut per Ruypas del Mediterráneo SL, Alacant.",
+        "en": "Coming soon: 2023 Tesla Model 3 Long Range Dual Motor AWD in grey, 110,199 km, battery at 94% SoH. All-wheel drive, 498 hp, HW3, AMD Ryzen, heat pump and panoramic roof. Price on request. Sold by Ruypas del Mediterráneo SL, Alicante.",
+        "fr": "Bientôt disponible : Tesla Model 3 Grande Autonomie Dual Motor de 2023, grise, 110 199 km, batterie à 94 % (SoH). Transmission intégrale, 498 ch, HW3, AMD Ryzen, pompe à chaleur et toit panoramique. Prix sur demande. Vendue par Ruypas del Mediterráneo SL, Alicante.",
+        "de": "Demnächst: Tesla Model 3 Maximale Reichweite Dual Motor von 2023 in Grau, 110.199 km, Akku bei 94 % SoH. Allradantrieb, 498 PS, HW3, AMD Ryzen, Wärmepumpe und Panoramadach. Preis auf Anfrage. Verkauf durch Ruypas del Mediterráneo SL, Alicante.",
+        "ru": "Скоро: Tesla Model 3 Long Range Dual Motor AWD 2023 года, серый, пробег 110 199 км, состояние батареи 94 % (SoH). Полный привод, 498 л. с., HW3, AMD Ryzen, тепловой насос, панорамная крыша. Цена по запросу. Продавец: Ruypas del Mediterráneo SL, Аликанте.",
+        "zh": "即将上市：2023 年款灰色特斯拉 Model 3 长续航双电机全轮驱动版，行驶 110,199 公里，电池健康度 94%（SoH）。全轮驱动，498 马力，HW3，AMD Ryzen，热泵，全景天窗。价格面议。卖方：Ruypas del Mediterráneo SL，阿利坎特。"
+      },
+      "photos": [
+        "img/model3-lr-1.jpg",
+        "img/model3-lr-2.jpg",
+        "img/model3-lr-3.jpg",
+        "img/model3-lr-4.jpg",
+        "img/model3-lr-5.jpg",
+        "img/model3-lr-6.jpg",
+        "img/model3-lr-7.jpg",
+        "img/model3-lr-8.jpg",
+        "img/model3-lr-9.jpg",
+        "img/model3-lr-10.jpg",
+        "img/model3-lr-11.jpg",
+        "img/model3-lr-12.jpg",
+        "img/model3-lr-13.jpg",
+        "img/model3-lr-14.jpg",
+        "img/model3-lr-15.jpg"
+      ],
+      "silhouette": "img/placeholder-sedan.svg",
+      "kmApprox": false,
+      "ref": "RUY-M3LR",
       "availability": "PreOrder",
       "label": {
         "es": "Etiqueta DGT CERO",
