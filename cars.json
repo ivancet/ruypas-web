@@ -2,6 +2,255 @@
   "_note": "Edita aquí tus coches. category: 'sale' = Ruypas Import (venta), 'rent' = Ruypas Rent (alquiler). Para añadir un coche en venta copia un bloque 'sale' y cambia id, unit, km, battery, photos y, si quieres, price (número en €) o priceText; con price null se muestra 'Precio a consultar'. 'ref' = referencia visible (igual que el id del feed de Google). 'availability' = 'InStock' o 'PreOrder' (JSON-LD). Nunca poner el VIN ni 'importado' en textos públicos. Textos en 7 idiomas (es, ca, en, fr, de, ru, zh); si falta un idioma se usa el español. Precios de alquiler de EJEMPLO (example: true). Fotos en img/. 'status':'soon' = Próximamente (insignia en tarjeta y ficha, sin precio).",
   "cars": [
     {
+      "id": "model3-b",
+      "category": "sale",
+      "name": "Tesla Model 3 RWD",
+      "unit": {
+        "es": "Unidad B",
+        "ca": "Unitat B",
+        "en": "Unit B",
+        "fr": "Unité B",
+        "de": "Fahrzeug B",
+        "ru": "Автомобиль B",
+        "zh": "B 车"
+      },
+      "year": 2023,
+      "km": 258600,
+      "battery": {
+        "es": "≈90 % (según el vendedor, sin informe)",
+        "ca": "≈90 % (segons el venedor, sense informe)",
+        "en": "≈90% (dealer figure, no report)",
+        "fr": "≈ 90 % (selon le vendeur, sans rapport)",
+        "de": "≈90 % (Händlerangabe, ohne Bericht)",
+        "ru": "≈90 % (по данным продавца, без отчёта)",
+        "zh": "约 90%（经销商提供，无检测报告）"
+      },
+      "price": 23400,
+      "priceText": null,
+      "eta": {
+        "es": "Ya en Alicante: se puede ver con cita previa. Ya se puede reservar.",
+        "ca": "Ja a Alacant: es pot veure amb cita prèvia. Ja es pot reservar.",
+        "en": "Already in Alicante: viewings by appointment. You can reserve it now.",
+        "fr": "Déjà à Alicante : visite sur rendez-vous. Réservable dès maintenant.",
+        "de": "Bereits in Alicante: Besichtigung nach Terminvereinbarung. Jetzt reservierbar.",
+        "ru": "Уже в Аликанте: осмотр по предварительной записи. Можно забронировать уже сейчас.",
+        "zh": "车辆已在阿利坎特：可预约看车，现在即可预订。"
+      },
+      "specs": {
+        "version": {
+          "es": "Model 3 RWD (Standard Range Plus), batería LFP de 60 kWh",
+          "ca": "Model 3 RWD (Standard Range Plus), bateria LFP de 60 kWh",
+          "en": "Model 3 RWD (Standard Range Plus), 60 kWh LFP battery",
+          "fr": "Model 3 Propulsion (Standard Range Plus), batterie LFP 60 kWh",
+          "de": "Model 3 Hinterradantrieb (Standard Range Plus), 60-kWh-LFP-Akku",
+          "ru": "Model 3 RWD (Standard Range Plus), батарея LFP 60 кВт·ч",
+          "zh": "Model 3 后驱版（标准续航升级版），60 kWh 磷酸铁锂电池"
+        },
+        "reg": {
+          "es": "04/2023",
+          "ca": "04/2023",
+          "en": "04/2023",
+          "fr": "04/2023",
+          "de": "04/2023",
+          "ru": "04/2023",
+          "zh": "2023 年 4 月"
+        },
+        "power": {
+          "es": "208 kW / 283 CV",
+          "ca": "208 kW / 283 CV",
+          "en": "208 kW / 283 hp",
+          "fr": "208 kW / 283 ch",
+          "de": "208 kW / 283 PS",
+          "ru": "208 кВт / 283 л. с.",
+          "zh": "208 kW / 283 马力"
+        },
+        "accel": {
+          "es": "6,1 s",
+          "ca": "6,1 s",
+          "en": "6.1 s",
+          "fr": "6,1 s",
+          "de": "6,1 s",
+          "ru": "6,1 с",
+          "zh": "6.1 秒"
+        },
+        "wltp": {
+          "es": "491 km",
+          "ca": "491 km",
+          "en": "491 km",
+          "fr": "491 km",
+          "de": "491 km",
+          "ru": "491 км",
+          "zh": "491 公里"
+        },
+        "color": {
+          "es": "Negro sólido",
+          "ca": "Negre sòlid",
+          "en": "Solid Black",
+          "fr": "Noir uni",
+          "de": "Solid Black (Uni-Schwarz)",
+          "ru": "Чёрный (Solid Black)",
+          "zh": "纯黑色"
+        },
+        "interior": {
+          "es": "Cuero vegano negro, molduras efecto madera",
+          "ca": "Pell vegana negra, motllures efecte fusta",
+          "en": "Black vegan leather, wood-look trim",
+          "fr": "Similicuir vegan noir, inserts aspect bois",
+          "de": "Schwarzes veganes Leder, Zierleisten in Holzoptik",
+          "ru": "Чёрная веганская кожа, вставки под дерево",
+          "zh": "黑色素皮内饰，仿木纹饰板"
+        },
+        "seats": {
+          "es": "5",
+          "ca": "5",
+          "en": "5",
+          "fr": "5",
+          "de": "5",
+          "ru": "5",
+          "zh": "5"
+        },
+        "charge": {
+          "es": "AC 11 kW trifásica + carga rápida CCS",
+          "ca": "AC 11 kW trifàsica + càrrega ràpida CCS",
+          "en": "11 kW 3-phase AC + CCS fast charging",
+          "fr": "AC 11 kW triphasé + recharge rapide CCS",
+          "de": "11 kW AC (3-phasig) + CCS-Schnellladen",
+          "ru": "AC 11 кВт (3 фазы) + быстрая зарядка CCS",
+          "zh": "11 kW 三相交流充电 + CCS 直流快充"
+        }
+      },
+      "features": {
+        "es": [
+          "Autopilot básico (control de crucero adaptativo y mantenimiento de carril)",
+          "Techo panorámico de cristal",
+          "Asientos delanteros y volante calefactados",
+          "Asientos delanteros eléctricos con memoria",
+          "Cámara 360° y sensores de aparcamiento delanteros y traseros",
+          "Bomba de calor",
+          "Llantas de aleación de 19\"",
+          "Pantalla táctil central de 15\"",
+          "Cargador inalámbrico para el móvil",
+          "Acceso sin llave (móvil y tarjetas)",
+          "Aviso de ángulo muerto y frenada de emergencia"
+        ],
+        "ca": [
+          "Autopilot bàsic (control de creuer adaptatiu i manteniment de carril)",
+          "Sostre panoràmic de vidre",
+          "Seients davanters i volant calefactats",
+          "Seients davanters elèctrics amb memòria",
+          "Càmera 360° i sensors d'aparcament davanters i posteriors",
+          "Bomba de calor",
+          "Llantes d'aliatge de 19\"",
+          "Pantalla tàctil central de 15\"",
+          "Carregador sense fil per al mòbil",
+          "Accés sense clau (mòbil i targetes)",
+          "Avís d'angle mort i frenada d'emergència"
+        ],
+        "en": [
+          "Basic Autopilot (adaptive cruise control and lane keeping)",
+          "Glass panoramic roof",
+          "Heated front seats and steering wheel",
+          "Power front seats with memory",
+          "360° camera and front and rear parking sensors",
+          "Heat pump",
+          "19\" alloy wheels",
+          "15\" central touchscreen",
+          "Wireless phone charging",
+          "Keyless entry (phone key and key cards)",
+          "Blind-spot warning and emergency braking"
+        ],
+        "fr": [
+          "Autopilot de base (régulateur adaptatif et maintien de voie)",
+          "Toit panoramique en verre",
+          "Sièges avant et volant chauffants",
+          "Sièges avant électriques à mémoire",
+          "Caméra 360° et radars de stationnement avant et arrière",
+          "Pompe à chaleur",
+          "Jantes alliage 19\"",
+          "Écran tactile central 15\"",
+          "Recharge sans fil du smartphone",
+          "Accès sans clé (téléphone et cartes)",
+          "Alerte d'angle mort et freinage d'urgence"
+        ],
+        "de": [
+          "Basis-Autopilot (Abstandstempomat und Spurhalteassistent)",
+          "Panorama-Glasdach",
+          "Sitzheizung vorn und beheiztes Lenkrad",
+          "Elektrische Vordersitze mit Memory",
+          "360°-Kamera und Parksensoren vorn und hinten",
+          "Wärmepumpe",
+          "19-Zoll-Leichtmetallfelgen",
+          "15-Zoll-Touchscreen in der Mitte",
+          "Kabelloses Laden fürs Handy",
+          "Schlüsselloser Zugang (Handy und Schlüsselkarten)",
+          "Totwinkelwarner und Notbremsassistent"
+        ],
+        "ru": [
+          "Базовый Autopilot (адаптивный круиз-контроль и удержание в полосе)",
+          "Стеклянная панорамная крыша",
+          "Подогрев передних сидений и руля",
+          "Электрорегулировка передних сидений с памятью",
+          "Камера 360° и парктроники спереди и сзади",
+          "Тепловой насос",
+          "19-дюймовые легкосплавные диски",
+          "Центральный сенсорный экран 15\"",
+          "Беспроводная зарядка телефона",
+          "Бесключевой доступ (телефон и карты-ключи)",
+          "Контроль слепых зон и экстренное торможение"
+        ],
+        "zh": [
+          "基础版 Autopilot（自适应巡航和车道保持）",
+          "全景玻璃车顶",
+          "前排座椅和方向盘加热",
+          "前排电动座椅带记忆",
+          "360° 摄像头及前后驻车雷达",
+          "热泵空调",
+          "19 英寸铝合金轮毂",
+          "15 英寸中控触摸屏",
+          "手机无线充电",
+          "无钥匙进入（手机钥匙和卡片钥匙）",
+          "盲区预警和紧急制动"
+        ]
+      },
+      "description": {
+        "es": "Tesla Model 3 RWD de 2023 en negro: eléctrico de 491 km WLTP, 283 CV y techo panorámico. 23.400 € IVA incluido. Vendido por Ruypas del Mediterráneo SL, Alicante.",
+        "ca": "Tesla Model 3 RWD del 2023 en negre: elèctric de 491 km WLTP, 283 CV i sostre panoràmic. 23.400 € IVA inclòs. Venut per Ruypas del Mediterráneo SL, Alacant.",
+        "en": "2023 Tesla Model 3 RWD in black: 491 km WLTP range, 283 hp and a panoramic roof. EUR 23,400 VAT included. Sold by Ruypas del Mediterráneo SL, Alicante.",
+        "fr": "Tesla Model 3 RWD de 2023, noire : 491 km WLTP, 283 ch et toit panoramique. 23 400 € TVA incluse. Vendue par Ruypas del Mediterráneo SL, Alicante.",
+        "de": "Tesla Model 3 RWD von 2023 in Schwarz: 491 km WLTP, 283 PS und Panoramadach. 23.400 € inkl. MwSt. Verkauf durch Ruypas del Mediterráneo SL, Alicante.",
+        "ru": "Tesla Model 3 RWD 2023 года, чёрный: запас хода 491 км по WLTP, 283 л. с., панорамная крыша. 23 400 € с НДС. Продавец: Ruypas del Mediterráneo SL, Аликанте.",
+        "zh": "2023 年款黑色特斯拉 Model 3 后驱版：WLTP 续航 491 公里，283 马力，全景天窗。售价 23,400 欧元（含增值税）。卖方：Ruypas del Mediterráneo SL，阿利坎特。"
+      },
+      "photos": [
+        "img/model3-b-1.jpg",
+        "img/model3-b-2.jpg",
+        "img/model3-b-3.jpg",
+        "img/model3-b-4.jpg",
+        "img/model3-b-9.jpg",
+        "img/model3-b-11.jpg",
+        "img/model3-b-10.jpg",
+        "img/model3-b-5.jpg",
+        "img/model3-b-12.jpg",
+        "img/model3-b-13.jpg",
+        "img/model3-b-6.jpg",
+        "img/model3-b-7.jpg",
+        "img/model3-b-8.jpg"
+      ],
+      "silhouette": "img/placeholder-sedan.svg",
+      "kmApprox": true,
+      "ref": "RUY-M3B",
+      "availability": "InStock",
+      "label": {
+        "es": "Etiqueta DGT CERO",
+        "ca": "Etiqueta DGT ZERO",
+        "en": "DGT ZERO emissions label",
+        "fr": "Vignette DGT ZÉRO",
+        "de": "DGT-Plakette ZERO",
+        "ru": "Экологическая метка DGT CERO",
+        "zh": "DGT 零排放标签"
+      }
+    },
+    {
       "id": "model3-lr-2023",
       "category": "sale",
       "status": "soon",
@@ -258,255 +507,6 @@
       "kmApprox": false,
       "ref": "RUY-M3LR",
       "availability": "PreOrder",
-      "label": {
-        "es": "Etiqueta DGT CERO",
-        "ca": "Etiqueta DGT ZERO",
-        "en": "DGT ZERO emissions label",
-        "fr": "Vignette DGT ZÉRO",
-        "de": "DGT-Plakette ZERO",
-        "ru": "Экологическая метка DGT CERO",
-        "zh": "DGT 零排放标签"
-      }
-    },
-    {
-      "id": "model3-b",
-      "category": "sale",
-      "name": "Tesla Model 3 RWD",
-      "unit": {
-        "es": "Unidad B",
-        "ca": "Unitat B",
-        "en": "Unit B",
-        "fr": "Unité B",
-        "de": "Fahrzeug B",
-        "ru": "Автомобиль B",
-        "zh": "B 车"
-      },
-      "year": 2023,
-      "km": 258600,
-      "battery": {
-        "es": "≈90 % (según el vendedor, sin informe)",
-        "ca": "≈90 % (segons el venedor, sense informe)",
-        "en": "≈90% (dealer figure, no report)",
-        "fr": "≈ 90 % (selon le vendeur, sans rapport)",
-        "de": "≈90 % (Händlerangabe, ohne Bericht)",
-        "ru": "≈90 % (по данным продавца, без отчёта)",
-        "zh": "约 90%（经销商提供，无检测报告）"
-      },
-      "price": 23400,
-      "priceText": null,
-      "eta": {
-        "es": "Ya en Alicante: se puede ver con cita previa. Ya se puede reservar.",
-        "ca": "Ja a Alacant: es pot veure amb cita prèvia. Ja es pot reservar.",
-        "en": "Already in Alicante: viewings by appointment. You can reserve it now.",
-        "fr": "Déjà à Alicante : visite sur rendez-vous. Réservable dès maintenant.",
-        "de": "Bereits in Alicante: Besichtigung nach Terminvereinbarung. Jetzt reservierbar.",
-        "ru": "Уже в Аликанте: осмотр по предварительной записи. Можно забронировать уже сейчас.",
-        "zh": "车辆已在阿利坎特：可预约看车，现在即可预订。"
-      },
-      "specs": {
-        "version": {
-          "es": "Model 3 RWD (Standard Range Plus), batería LFP de 60 kWh",
-          "ca": "Model 3 RWD (Standard Range Plus), bateria LFP de 60 kWh",
-          "en": "Model 3 RWD (Standard Range Plus), 60 kWh LFP battery",
-          "fr": "Model 3 Propulsion (Standard Range Plus), batterie LFP 60 kWh",
-          "de": "Model 3 Hinterradantrieb (Standard Range Plus), 60-kWh-LFP-Akku",
-          "ru": "Model 3 RWD (Standard Range Plus), батарея LFP 60 кВт·ч",
-          "zh": "Model 3 后驱版（标准续航升级版），60 kWh 磷酸铁锂电池"
-        },
-        "reg": {
-          "es": "04/2023",
-          "ca": "04/2023",
-          "en": "04/2023",
-          "fr": "04/2023",
-          "de": "04/2023",
-          "ru": "04/2023",
-          "zh": "2023 年 4 月"
-        },
-        "power": {
-          "es": "208 kW / 283 CV",
-          "ca": "208 kW / 283 CV",
-          "en": "208 kW / 283 hp",
-          "fr": "208 kW / 283 ch",
-          "de": "208 kW / 283 PS",
-          "ru": "208 кВт / 283 л. с.",
-          "zh": "208 kW / 283 马力"
-        },
-        "accel": {
-          "es": "6,1 s",
-          "ca": "6,1 s",
-          "en": "6.1 s",
-          "fr": "6,1 s",
-          "de": "6,1 s",
-          "ru": "6,1 с",
-          "zh": "6.1 秒"
-        },
-        "wltp": {
-          "es": "491 km",
-          "ca": "491 km",
-          "en": "491 km",
-          "fr": "491 km",
-          "de": "491 km",
-          "ru": "491 км",
-          "zh": "491 公里"
-        },
-        "color": {
-          "es": "Negro sólido",
-          "ca": "Negre sòlid",
-          "en": "Solid Black",
-          "fr": "Noir uni",
-          "de": "Solid Black (Uni-Schwarz)",
-          "ru": "Чёрный (Solid Black)",
-          "zh": "纯黑色"
-        },
-        "interior": {
-          "es": "Cuero vegano negro, molduras efecto madera",
-          "ca": "Pell vegana negra, motllures efecte fusta",
-          "en": "Black vegan leather, wood-look trim",
-          "fr": "Similicuir vegan noir, inserts aspect bois",
-          "de": "Schwarzes veganes Leder, Zierleisten in Holzoptik",
-          "ru": "Чёрная веганская кожа, вставки под дерево",
-          "zh": "黑色素皮内饰，仿木纹饰板"
-        },
-        "seats": {
-          "es": "5",
-          "ca": "5",
-          "en": "5",
-          "fr": "5",
-          "de": "5",
-          "ru": "5",
-          "zh": "5"
-        },
-        "charge": {
-          "es": "AC 11 kW trifásica + carga rápida CCS",
-          "ca": "AC 11 kW trifàsica + càrrega ràpida CCS",
-          "en": "11 kW 3-phase AC + CCS fast charging",
-          "fr": "AC 11 kW triphasé + recharge rapide CCS",
-          "de": "11 kW AC (3-phasig) + CCS-Schnellladen",
-          "ru": "AC 11 кВт (3 фазы) + быстрая зарядка CCS",
-          "zh": "11 kW 三相交流充电 + CCS 直流快充"
-        }
-      },
-      "features": {
-        "es": [
-          "Autopilot básico (control de crucero adaptativo y mantenimiento de carril)",
-          "Techo panorámico de cristal",
-          "Asientos delanteros y volante calefactados",
-          "Asientos delanteros eléctricos con memoria",
-          "Cámara 360° y sensores de aparcamiento delanteros y traseros",
-          "Bomba de calor",
-          "Llantas de aleación de 19\"",
-          "Pantalla táctil central de 15\"",
-          "Cargador inalámbrico para el móvil",
-          "Acceso sin llave (móvil y tarjetas)",
-          "Aviso de ángulo muerto y frenada de emergencia"
-        ],
-        "ca": [
-          "Autopilot bàsic (control de creuer adaptatiu i manteniment de carril)",
-          "Sostre panoràmic de vidre",
-          "Seients davanters i volant calefactats",
-          "Seients davanters elèctrics amb memòria",
-          "Càmera 360° i sensors d'aparcament davanters i posteriors",
-          "Bomba de calor",
-          "Llantes d'aliatge de 19\"",
-          "Pantalla tàctil central de 15\"",
-          "Carregador sense fil per al mòbil",
-          "Accés sense clau (mòbil i targetes)",
-          "Avís d'angle mort i frenada d'emergència"
-        ],
-        "en": [
-          "Basic Autopilot (adaptive cruise control and lane keeping)",
-          "Glass panoramic roof",
-          "Heated front seats and steering wheel",
-          "Power front seats with memory",
-          "360° camera and front and rear parking sensors",
-          "Heat pump",
-          "19\" alloy wheels",
-          "15\" central touchscreen",
-          "Wireless phone charging",
-          "Keyless entry (phone key and key cards)",
-          "Blind-spot warning and emergency braking"
-        ],
-        "fr": [
-          "Autopilot de base (régulateur adaptatif et maintien de voie)",
-          "Toit panoramique en verre",
-          "Sièges avant et volant chauffants",
-          "Sièges avant électriques à mémoire",
-          "Caméra 360° et radars de stationnement avant et arrière",
-          "Pompe à chaleur",
-          "Jantes alliage 19\"",
-          "Écran tactile central 15\"",
-          "Recharge sans fil du smartphone",
-          "Accès sans clé (téléphone et cartes)",
-          "Alerte d'angle mort et freinage d'urgence"
-        ],
-        "de": [
-          "Basis-Autopilot (Abstandstempomat und Spurhalteassistent)",
-          "Panorama-Glasdach",
-          "Sitzheizung vorn und beheiztes Lenkrad",
-          "Elektrische Vordersitze mit Memory",
-          "360°-Kamera und Parksensoren vorn und hinten",
-          "Wärmepumpe",
-          "19-Zoll-Leichtmetallfelgen",
-          "15-Zoll-Touchscreen in der Mitte",
-          "Kabelloses Laden fürs Handy",
-          "Schlüsselloser Zugang (Handy und Schlüsselkarten)",
-          "Totwinkelwarner und Notbremsassistent"
-        ],
-        "ru": [
-          "Базовый Autopilot (адаптивный круиз-контроль и удержание в полосе)",
-          "Стеклянная панорамная крыша",
-          "Подогрев передних сидений и руля",
-          "Электрорегулировка передних сидений с памятью",
-          "Камера 360° и парктроники спереди и сзади",
-          "Тепловой насос",
-          "19-дюймовые легкосплавные диски",
-          "Центральный сенсорный экран 15\"",
-          "Беспроводная зарядка телефона",
-          "Бесключевой доступ (телефон и карты-ключи)",
-          "Контроль слепых зон и экстренное торможение"
-        ],
-        "zh": [
-          "基础版 Autopilot（自适应巡航和车道保持）",
-          "全景玻璃车顶",
-          "前排座椅和方向盘加热",
-          "前排电动座椅带记忆",
-          "360° 摄像头及前后驻车雷达",
-          "热泵空调",
-          "19 英寸铝合金轮毂",
-          "15 英寸中控触摸屏",
-          "手机无线充电",
-          "无钥匙进入（手机钥匙和卡片钥匙）",
-          "盲区预警和紧急制动"
-        ]
-      },
-      "description": {
-        "es": "Tesla Model 3 RWD de 2023 en negro: eléctrico de 491 km WLTP, 283 CV y techo panorámico. 23.400 € IVA incluido. Vendido por Ruypas del Mediterráneo SL, Alicante.",
-        "ca": "Tesla Model 3 RWD del 2023 en negre: elèctric de 491 km WLTP, 283 CV i sostre panoràmic. 23.400 € IVA inclòs. Venut per Ruypas del Mediterráneo SL, Alacant.",
-        "en": "2023 Tesla Model 3 RWD in black: 491 km WLTP range, 283 hp and a panoramic roof. EUR 23,400 VAT included. Sold by Ruypas del Mediterráneo SL, Alicante.",
-        "fr": "Tesla Model 3 RWD de 2023, noire : 491 km WLTP, 283 ch et toit panoramique. 23 400 € TVA incluse. Vendue par Ruypas del Mediterráneo SL, Alicante.",
-        "de": "Tesla Model 3 RWD von 2023 in Schwarz: 491 km WLTP, 283 PS und Panoramadach. 23.400 € inkl. MwSt. Verkauf durch Ruypas del Mediterráneo SL, Alicante.",
-        "ru": "Tesla Model 3 RWD 2023 года, чёрный: запас хода 491 км по WLTP, 283 л. с., панорамная крыша. 23 400 € с НДС. Продавец: Ruypas del Mediterráneo SL, Аликанте.",
-        "zh": "2023 年款黑色特斯拉 Model 3 后驱版：WLTP 续航 491 公里，283 马力，全景天窗。售价 23,400 欧元（含增值税）。卖方：Ruypas del Mediterráneo SL，阿利坎特。"
-      },
-      "photos": [
-        "img/model3-b-1.jpg",
-        "img/model3-b-2.jpg",
-        "img/model3-b-3.jpg",
-        "img/model3-b-4.jpg",
-        "img/model3-b-9.jpg",
-        "img/model3-b-11.jpg",
-        "img/model3-b-10.jpg",
-        "img/model3-b-5.jpg",
-        "img/model3-b-12.jpg",
-        "img/model3-b-13.jpg",
-        "img/model3-b-6.jpg",
-        "img/model3-b-7.jpg",
-        "img/model3-b-8.jpg"
-      ],
-      "silhouette": "img/placeholder-sedan.svg",
-      "kmApprox": true,
-      "ref": "RUY-M3B",
-      "availability": "InStock",
       "label": {
         "es": "Etiqueta DGT CERO",
         "ca": "Etiqueta DGT ZERO",
