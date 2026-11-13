@@ -55,11 +55,17 @@ render();suggest()}
 
 // Selector de idioma: mantiene el coche (?id=) y las fechas al cambiar de idioma
 function syncSwitch(id){const q=new URLSearchParams(location.search);if(id)q.set("id",id);const qs=q.toString();
-document.querySelectorAll(".lang-link").forEach(a=>{a.href=a.dataset.href+(qs?"?"+qs:"")+location.hash;a.onclick=()=>{try{localStorage.setItem("ruypas-lang",a.hreflang)}catch(e){}}})}
+document.querySelectorAll(".lang-link").forEach(a=>{const staticSale=/sale-[\w-]+\.html/.test(a.dataset.href||"");a.href=a.dataset.href+((qs&&!staticSale)?"?"+qs:"")+location.hash;a.onclick=()=>{try{localStorage.setItem("ruypas-lang",a.hreflang)}catch(e){}}})}
 // Ficha de coche: título, descripción, canonical y hreflang con el id del coche
 function setMeta(c){const d=tr(c.description);const m=document.querySelector('meta[name="description"]');if(d&&m)m.content=c.name+" — "+d;
-const q="?id="+encodeURIComponent(c.id);const cn=document.querySelector('link[rel="canonical"]');if(cn&&!cn.href.includes("?"))cn.href+=q;
-document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(a=>{if(!a.href.includes("?"))a.href+=q})}
+const file="sale-"+c.id+".html";
+const swap=h=>(h||"").replace(/sale\.html(?:\?[^#]*)?|sale-[\w-]+\.html/,file);
+const cn=document.querySelector('link[rel="canonical"]');if(cn)cn.href=swap(cn.href);
+document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(a=>{a.href=swap(a.href)});
+const og=document.querySelector('meta[property="og:url"]');if(og&&cn)og.content=cn.href;
+const ogt=document.querySelector('meta[property="og:title"]');if(ogt)ogt.content=document.title;
+const ogd=document.querySelector('meta[property="og:description"]');if(ogd&&m)ogd.content=m.content;
+const ogi=document.querySelector('meta[property="og:image"]');if(ogi&&c.photos&&c.photos[0])ogi.content=new URL(P(c.photos[0]),document.baseURI).href}
 // Sugerencia de idioma según el navegador (nunca redirige)
 function suggest(){let chosen=null;try{chosen=localStorage.getItem("ruypas-lang")}catch(e){}if(chosen)return;
 const pref=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]).map(x=>String(x).slice(0,2).toLowerCase()).find(x=>LANGS.includes(x));
@@ -76,9 +82,9 @@ function saleMsg(c){return `${t("m.sale.hello")}\n\n${c.name} · ${tr(c.unit)} �
 const waHref=txt=>`https://wa.me/${OWNER.wa}?text=${encodeURIComponent(txt)}`;
 const mailHref=(subj,txt)=>`mailto:${OWNER.email}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(txt)}`;
 function renderImport(){const g=$("#sale-grid");if(!g)return;
-g.innerHTML=SALE.map(c=>`<article class="card sale-card"><a class="ph" href="sale.html?id=${c.id}"><img src="${img(c)}" alt="${esc(c.name+" · "+tr(c.unit))}" loading="lazy"><span class="badge price-badge">${esc(priceTxt(c))}</span>${c.status==="soon"?`<span class="badge soon-badge">${esc(t("sale.soon"))}</span>`:""}</a><div class="b"><h3><a href="sale.html?id=${c.id}">${esc(c.name)}</a> <small class="meta">· ${esc(tr(c.unit))}</small></h3>
+g.innerHTML=SALE.map(c=>`<article class="card sale-card"><a class="ph" href="sale-${c.id}.html"><img src="${img(c)}" alt="${esc(c.name+" · "+tr(c.unit))}" loading="lazy"><span class="badge price-badge">${esc(priceTxt(c))}</span>${c.status==="soon"?`<span class="badge soon-badge">${esc(t("sale.soon"))}</span>`:""}</a><div class="b"><h3><a href="sale-${c.id}.html">${esc(c.name)}</a> <small class="meta">· ${esc(tr(c.unit))}</small></h3>
 <div class="meta">${c.year} · ${fmtKm(c)} · ${esc(tr(c.specs.wltp))} WLTP · ${esc(tr(c.specs.power))}</div><div class="meta">🔋 ${esc(t("sale.batt"))}: ${esc(tr(c.battery))}</div><p class="eta">🚚 ${esc(tr(c.eta))}</p>
-<div class="actions"><a class="btn" href="sale.html?id=${c.id}">${esc(t("imp.more"))}</a><a class="btn wa" target="_blank" rel="noopener" href="${waHref(saleMsg(c).replace(location.href.split("#")[0],new URL("sale.html?id="+c.id,location.href).href))}">💬 WhatsApp</a></div></div></article>`).join("")}
+<div class="actions"><a class="btn" href="sale-${c.id}.html">${esc(t("imp.more"))}</a><a class="btn wa" target="_blank" rel="noopener" href="${waHref(saleMsg(c).replace(location.href.split("#")[0],new URL("sale-"+c.id+".html",location.href).href))}">💬 WhatsApp</a></div></div></article>`).join("")}
 // Vendidos / entregados: solo con al menos 2 coches marcados status "sold" (sin precio ni comprador)
 const SOLD_MIN=2;
 function renderSold(){const sec=$("#vendidos");if(!sec)return;if(SOLD.length<SOLD_MIN){sec.hidden=true;return}sec.hidden=false;
@@ -87,21 +93,22 @@ function renderSold(){const sec=$("#vendidos");if(!sec)return;if(SOLD.length<SOL
  return `<article class="card sale-card is-sold"><div class="ph"><img src="${ph[0]}" alt="${esc(nm)} · ${bd}" loading="lazy"><span class="badge sold-badge">${bd}</span></div>${ph.length>1?`<div class="sold-th">${ph.map((u,i)=>`<button type="button" data-src="${u}" aria-label="${esc(nm)} ${i+1}"${i?"":' class="on"'}><img src="${u}" alt="" loading="lazy"></button>`).join("")}</div>`:""}
  <div class="b"><h3>${esc(nm)}</h3><div class="meta">${[tr(S.color),c.km?fmtKm(c):"",tr(S.origin)].filter(Boolean).map(esc).join(" · ")}</div>${S.extra?`<div class="meta">${esc(tr(S.extra))}</div>`:""}<p class="meta sold-l">✅ ${esc(t("sold.state"))}</p></div></article>`}).join("");
  $("#sold-grid").onclick=e=>{const b=e.target.closest(".sold-th button");if(!b)return;const card=b.closest(".card");card.querySelector(".ph img").src=b.dataset.src;card.querySelectorAll(".sold-th button").forEach(x=>x.classList.toggle("on",x===b))}}
-function renderSale(){const el=$("#sale");if(!el)return;const c=SALE.find(x=>x.id===qs.get("id"))||SALE[0];/* los vendidos no tienen ficha de venta */if(!c){el.innerHTML=t("notfound");return}
+function renderSale(){const el=$("#sale");if(!el)return;const c=SALE.find(x=>x.id===(qs.get("id")||el.dataset.saleId))||SALE[0];/* los vendidos no tienen ficha de venta */if(!c){el.innerHTML=t("notfound");return}
 document.title=`${c.name} ${c.year||""} · ${tr(c.unit)} · Ruypas`;setMeta(c);syncSwitch(c.id);const ph=(c.photos&&c.photos.length?c.photos:[c.silhouette]).map(P);
 const S=c.specs,rows=[[t("sale.price"),priceTxt(c)+(c.price?" "+t("sale.vat"):"")],c.ref?[t("sale.ref"),c.ref]:null,[t("sale.km"),fmtKm(c)],[t("sale.eta"),tr(c.eta)],[t("sale.batt"),tr(c.battery)],[t("sale.version"),tr(S.version)],[t("sale.reg"),tr(S.reg)],[t("sale.power"),tr(S.power)],[t("sale.accel"),tr(S.accel)],[t("sale.wltp"),tr(S.wltp)],[t("color"),tr(S.color)],[t("sale.interior"),tr(S.interior)],[t("seats.l"),tr(S.seats)],[t("sale.charge"),tr(S.charge)],c.label?[t("sale.label"),tr(c.label)]:null].filter(r=>r&&r[1]);
-const msg=saleMsg(c)+(c.ref?"\n"+t("sale.ref")+" "+c.ref:"");const MAP="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("Avenida Costa Blanca 67, 03540 Alicante");
+const msg=saleMsg(c)+(c.ref?"\n"+t("sale.ref")+" "+c.ref:"");const MAP="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("C/ Arpón 19, bungalow 25, 03540 Alicante");
 el.innerHTML=`<div><p><a href="import.html#unidades">${esc(t("sale.back"))}</a></p><div class="gallery"><img id="main" src="${ph[0]}" alt="${esc(c.name)}"><div class="thumbs">${ph.map(p=>`<img src="${p}" alt="" loading="lazy" onclick="main.src=this.src">`).join("")}</div></div>
 ${c.status==="soon"?`<p style="margin:0 0 6px"><span class="badge soon-badge soon-big">${esc(t("sale.soon"))}</span></p>`:""}<p class="kicker dark">Ruypas${c.ref?" · "+esc(t("sale.ref"))+" "+esc(c.ref):""}</p><h1 style="margin:4px 0">${esc(c.name)} ${c.year?esc(String(c.year)):""} <small class="meta">· ${esc(tr(c.unit))}</small></h1><p>${esc(tr(c.description))}</p>
 <h2 class="h3">${esc(t("sale.specs"))}</h2><div class="specs">${rows.map(([k,v])=>`<div><span>${esc(k)}</span>${esc(v)}</div>`).join("")}</div>
 <h2 class="h3">${esc(t("sale.equip"))}</h2><ul class="feat">${(tr(c.features)||[]).map(f=>`<li>${esc(f)}</li>`).join("")}</ul></div>
 <div><div class="box sale-box" style="position:sticky;top:76px">${c.ref?`<p class="meta" style="margin:0">${esc(t("sale.ref"))} <b>${esc(c.ref)}</b></p>`:""}${c.status==="soon"?`<p style="margin:6px 0 2px"><span class="badge soon-badge soon-big">${esc(t("sale.soon"))}</span></p>`:""}<div class="price">${esc(priceTxt(c))}</div>${c.price?`<p style="margin:2px 0 8px"><b>${esc(t("sale.vat"))}</b></p>`:""}
 <p class="meta">🛣️ ${esc(fmtKm(c))} · ${esc(String(c.year||""))}</p><p class="meta">🚚 ${esc(tr(c.eta))}</p><p class="meta">🛡️ ${esc(t("sale.warranty"))}</p>
-<div class="seller" style="border-top:1px solid #ddd;margin-top:10px;padding-top:10px"><p class="meta" style="margin:0">${esc(t("sale.seller"))}</p><p style="margin:2px 0"><b>Ruypas del Mediterráneo SL</b></p><p class="meta" style="margin:2px 0">📍 Avda. Costa Blanca 67, 03540 Alicante · <a href="${MAP}" target="_blank" rel="noopener">${esc(t("sale.map"))}</a></p><p class="meta" style="margin:2px 0">🗓️ ${esc(t("sale.visit"))}</p><p class="meta" style="margin:2px 0">📞 <a href="tel:+34687812997">+34687812997</a> · ✉️ <a href="mailto:ivan@pizarro.cat">ivan@pizarro.cat</a></p></div>
+<div class="seller" style="border-top:1px solid #ddd;margin-top:10px;padding-top:10px"><p class="meta" style="margin:0">${esc(t("sale.seller"))}</p><p style="margin:2px 0"><b>Ruypas del Mediterráneo SL</b></p><p class="meta" style="margin:2px 0">📍 C/ Arpón 19, bungalow 25 (BW25), 03540 Alicante · <a href="${MAP}" target="_blank" rel="noopener">${esc(t("sale.map"))}</a></p><p class="meta" style="margin:2px 0">🗓️ ${esc(t("sale.visit"))}</p><p class="meta" style="margin:2px 0">📞 <a href="tel:+34687812997">+34687812997</a> · ✉️ <a href="mailto:ivan@pizarro.cat">ivan@pizarro.cat</a></p></div>
 <h2 style="font-size:1.15rem">${esc(t("sale.ask"))}</h2>
 <div class="actions"><a class="btn wa" target="_blank" rel="noopener" href="${waHref(msg)}">💬 ${esc(t("imp.wa"))}</a><a class="btn" href="${mailHref(t("m.sale.subj")+": "+c.name+(c.ref?" · "+c.ref:" · "+tr(c.unit)),msg)}">✉️ ${esc(t("imp.mail"))}</a></div>${c.price?"":`<p class="meta" style="margin-top:12px">💶 ${esc(t("price.req"))}</p>`}<p class="meta" style="margin-top:12px"><a href="${B}condiciones-venta.html">${esc(t("sale.cond"))}</a> · ${esc(t("imp.note"))}</p></div></div>`;carLD(c,ph)}
 // Datos estructurados del coche en venta (precio con IVA, sin VIN)
-function carLD(c,ph){const S=c.specs||{};const u=new URL(location.href);const page=location.origin+location.pathname+"?id="+encodeURIComponent(c.id);
+function carLD(c,ph){const S=c.specs||{};const canon=(document.querySelector('link[rel="canonical"]')||{}).href;
+ const page=canon&&canon.includes("sale-"+c.id)?canon:(location.origin+location.pathname.replace(/[^/]+$/,"")+"sale-"+c.id+".html");
  const off={"@type":"Offer","url":page,"availability":"https://schema.org/"+(c.availability||"InStock"),"itemCondition":"https://schema.org/UsedCondition","seller":{"@id":"https://ruypas.com/#org"}};
  if(c.price){off.price=c.price;off.priceCurrency="EUR";off.priceSpecification={"@type":"PriceSpecification","price":c.price,"priceCurrency":"EUR","valueAddedTaxIncluded":true}}
  const j={"@context":"https://schema.org","@type":"Car","name":c.name+" "+(c.year||""),"sku":c.ref||c.id,"url":page,"brand":{"@type":"Brand","name":"Tesla"},"model":"Model 3","itemCondition":"https://schema.org/UsedCondition",
